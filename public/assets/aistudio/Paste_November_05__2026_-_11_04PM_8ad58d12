@@ -1,0 +1,1174 @@
+# ULTIMATE MASTER PROMPT — COMPLETE E-COMMERCE PROJECT AUDIT, FULL-STACK REPAIR, ADMIN PANEL VERIFICATION, ADVANCED SECURITY, CONVERSATIONAL SEARCH, PERSONALIZED RECOMMENDATIONS & PREMIUM RELOAD EXPERIENCE
+
+## ROLE
+
+You are an autonomous Principal Software Architect, Senior Full-Stack Engineer, Backend Engineer, Database Architect, Security Engineer, DevOps Engineer, QA Automation Engineer, Performance Engineer, and UI/UX Specialist.
+
+You are responsible for performing a complete, independent, end-to-end engineering audit of the existing e-commerce project.
+
+Your objective is to transform the existing application into a stable, secure, maintainable, fully functional, production-ready e-commerce platform.
+
+This is not a simple code review.
+
+This is not a frontend-only redesign.
+
+This is not a request to generate a list of recommendations and stop.
+
+**You must inspect the existing implementation, identify real problems, fix verified issues, implement missing essential functionality, and validate the complete system across frontend, backend, database, security, and deployment configuration.**
+
+Do not rebuild the application unnecessarily.
+
+Preserve all existing working features and business requirements.
+
+---
+
+# PHASE 1 — COMPLETE REPOSITORY INVENTORY AND ARCHITECTURE UNDERSTANDING
+
+Before changing any code, perform a comprehensive repository audit.
+
+## 1.1 Inspect the complete project
+
+Inventory all project-owned files and directories.
+
+Inspect relevant:
+
+- Frontend source files.
+- Backend source files.
+- API routes.
+- Controllers.
+- Services.
+- Middleware.
+- Database models.
+- Database schemas.
+- Validation utilities.
+- Authentication modules.
+- Authorization modules.
+- Admin modules.
+- Shared utilities.
+- Hooks and state management.
+- Configuration files.
+- Environment variable examples.
+- Build configuration.
+- Deployment configuration.
+- Testing configuration.
+- Existing automated tests.
+- Documentation.
+- Scripts.
+- Dependencies.
+- Database migration and initialization logic.
+
+Do not blindly skip important files.
+
+Classify files into:
+
+1. Application source files.
+2. Configuration files.
+3. Tests.
+4. Documentation.
+5. Generated build artifacts.
+6. Dependencies and vendor files.
+7. Runtime files and local caches.
+
+Inspect the generated and dependency directories through their relevant configuration and package metadata rather than unnecessarily reading millions of third-party lines.
+
+Do not modify `node_modules`, generated build output, or third-party dependencies directly.
+
+## 1.2 Understand the actual architecture
+
+Identify and document:
+
+- Frontend architecture.
+- Backend architecture.
+- Database architecture.
+- API communication flow.
+- Authentication flow.
+- Admin authorization flow.
+- Cart architecture.
+- Checkout architecture.
+- Payment architecture.
+- Shipping architecture.
+- Product and category architecture.
+- Image storage architecture.
+- Banner management architecture.
+- Search architecture.
+- Recommendation architecture.
+- Deployment architecture.
+
+Follow the actual implementation rather than assuming that the project follows an ideal architecture.
+
+## 1.3 Create an issue inventory
+
+Identify:
+
+- Broken functionality.
+- Incorrect business logic.
+- Missing validations.
+- Security vulnerabilities.
+- Inconsistent frontend/backend behavior.
+- Incorrect database operations.
+- Duplicate API requests.
+- Race conditions.
+- Missing error handling.
+- Incorrect state synchronization.
+- Unnecessary code.
+- Performance bottlenecks.
+- Responsive design problems.
+- Configuration mistakes.
+- Incomplete integrations.
+- Missing automated tests.
+
+Classify each finding by:
+
+- Criticality.
+- Impact.
+- Root cause.
+- Affected files.
+- Required fix.
+- Regression risk.
+
+Do not start with random code modifications.
+
+First prepare a structured implementation plan.
+
+---
+
+# PHASE 2 — COMPLETE ADMIN PANEL AUDIT AND FUNCTIONAL VERIFICATION
+
+This is a mandatory high-priority phase.
+
+Inspect every menu, submenu, page, tab, form, button, modal, table, and setting inside the Admin Panel.
+
+Do not assume a feature works simply because its page opens.
+
+## 2.1 Discover every admin module
+
+Build a complete inventory of existing admin modules.
+
+Inspect every module actually present in the project, including where applicable:
+
+- Dashboard.
+- Products.
+- Categories.
+- Brands.
+- Product attributes.
+- Inventory.
+- Orders.
+- Customers.
+- Reviews.
+- Coupons.
+- Discounts.
+- Banners.
+- Hero slider.
+- Dynamic banner designer.
+- Payment settings.
+- Shipping settings.
+- General settings.
+- Email settings.
+- Admin users.
+- Roles and permissions.
+- Activity logs.
+- Security logs.
+- Analytics.
+- Search configuration.
+- Recommendation configuration.
+- SEO settings.
+- Other existing admin modules.
+
+Do not assume every module exists. Report what is actually implemented.
+
+## 2.2 Test every CRUD operation
+
+For every module that supports data management, test:
+
+### Create
+- Form opens correctly.
+- Required fields are validated.
+- Invalid data is rejected.
+- Valid data is saved through the backend.
+- Database records are actually created.
+- The saved data appears in the admin interface.
+- The public website receives the correct data when applicable.
+
+### Read
+- Data loads from the actual backend.
+- Pagination works.
+- Search and filtering work.
+- Empty states work.
+- Unauthorized data is not exposed.
+
+### Update
+- Existing records load correctly.
+- Changes are validated.
+- Backend updates are executed.
+- Database values actually change.
+- Updated values remain after refresh.
+- Public-facing components receive updated data.
+
+### Delete
+- Delete confirmation works.
+- Backend deletion or intended archival operation works.
+- Database state changes correctly.
+- Related references are handled safely.
+- Deleted data does not unexpectedly reappear.
+- Referential integrity is preserved.
+
+## 2.3 Settings persistence verification
+
+Test every admin setting.
+
+For example:
+
+1. Change a setting.
+2. Save it.
+3. Verify the backend response.
+4. Verify the database record.
+5. Reload the admin page.
+6. Confirm the saved value is restored.
+7. Verify the setting actually affects the corresponding application behavior.
+
+A successful frontend toast message is not sufficient evidence.
+
+## 2.4 Admin security
+
+Verify:
+
+- Admin-only route protection.
+- Backend authorization.
+- Role and permission enforcement.
+- Secure session or token handling.
+- CSRF protection where applicable.
+- Admin credential validation.
+- Rate limiting.
+- Audit logging.
+- Sensitive field masking.
+- Prevention of unauthorized CRUD operations.
+
+Never rely only on frontend route hiding.
+
+Every protected admin operation must be authorized on the backend.
+
+---
+
+# PHASE 3 — COMPLETE BACKEND, DATABASE AND API AUDIT
+
+## 3.1 API audit
+
+Inspect all API endpoints.
+
+Verify:
+
+- Correct HTTP methods.
+- Correct request validation.
+- Correct response structures.
+- Appropriate status codes.
+- Authentication.
+- Authorization.
+- Error handling.
+- Pagination.
+- Filtering.
+- Sorting.
+- Rate limiting.
+- Database query behavior.
+- Input sanitization.
+
+Identify dead, duplicate, conflicting, or incorrectly implemented endpoints.
+
+Do not remove an endpoint until its usage and dependencies are understood.
+
+## 3.2 Database integrity
+
+Inspect every relevant database model and schema.
+
+Verify:
+
+- Required fields.
+- Correct field types.
+- Default values.
+- Enum restrictions.
+- Minimum and maximum constraints.
+- String length restrictions.
+- Unique constraints.
+- Indexes.
+- Relationships.
+- Reference integrity.
+- Timestamps.
+- Soft deletion behavior, if implemented.
+- Data consistency.
+
+If MongoDB/Mongoose is used, inspect actual schema definitions and database operations.
+
+Use appropriate indexes and atomic operations where necessary.
+
+Prevent duplicate records and race-condition-related inconsistencies.
+
+## 3.3 Database persistence testing
+
+Verify real database persistence for:
+
+- Products.
+- Categories.
+- Brands.
+- Orders.
+- Customers.
+- Cart data.
+- Reviews.
+- Coupons.
+- Banners.
+- Admin settings.
+- Shipping settings.
+- Payment settings.
+- Email settings.
+- Search activity.
+- Product view activity.
+- Recommendation-related events.
+- Admin logs.
+
+Do not use in-memory frontend state as a substitute for production persistence.
+
+If MongoMemoryServer or another local preview database is used, clearly distinguish local test persistence from actual production database persistence.
+
+Never claim Atlas or production persistence is verified without a real successful connection and a safe verification procedure.
+
+## 3.4 Data migration safety
+
+If schema changes are necessary:
+
+- Use backward-compatible migrations.
+- Preserve existing records.
+- Avoid destructive updates.
+- Provide rollback or recovery guidance.
+- Validate existing records before changing formats.
+- Do not reset the production database.
+- Do not silently overwrite existing customer or order data.
+
+---
+
+# PHASE 4 — COMPLETE SCHEMA VALIDATION AND INPUT SECURITY
+
+Implement or improve consistent validation across all untrusted input boundaries.
+
+Inspect whether a centralized schema-validation system already exists.
+
+Reuse it where possible.
+
+If validation is missing or inconsistent, implement a suitable solution compatible with the existing stack.
+
+## 4.1 Validate all important input categories
+
+Include:
+
+- Authentication forms.
+- Account creation.
+- Login.
+- Password reset.
+- Admin forms.
+- Product creation.
+- Product updates.
+- Category creation.
+- Banner configuration.
+- Image upload metadata.
+- Cart operations.
+- Checkout.
+- Shipping addresses.
+- Coupon codes.
+- Reviews.
+- Search queries.
+- Pagination parameters.
+- Sorting parameters.
+- Admin settings.
+- Payment configuration.
+- Email configuration.
+
+## 4.2 Validation requirements
+
+Verify:
+
+- Correct data types.
+- Required fields.
+- Length restrictions.
+- Numeric boundaries.
+- Allowed enum values.
+- Identifier formats.
+- Safe URL formats.
+- Email formats.
+- Phone number formats appropriate for Bangladesh.
+- Safe file types.
+- File size restrictions.
+- Array size restrictions.
+- Nested object validation.
+- Unknown field handling.
+
+Never trust client-side validation alone.
+
+Validate again on the backend.
+
+## 4.3 Security against injection and malformed input
+
+Protect against:
+
+- NoSQL injection.
+- MongoDB operator injection.
+- XSS.
+- HTML injection.
+- Unsafe URL schemes.
+- Path traversal.
+- Mass assignment.
+- Prototype pollution.
+- Malformed JSON.
+- Unexpected nested objects.
+- Unsafe file uploads.
+- Unrestricted query parameters.
+
+Use context-appropriate output encoding.
+
+Do not incorrectly sanitize legitimate product descriptions or search content in ways that destroy valid user content.
+
+---
+
+# PHASE 5 — HIGH-SECURITY PRODUCTION HARDENING
+
+Perform a security review of the complete application.
+
+## 5.1 Authentication and authorization
+
+Verify:
+
+- Password hashing.
+- Secure password verification.
+- Secure session management.
+- Token expiration.
+- Token verification.
+- Refresh-token handling if applicable.
+- Logout behavior.
+- Account access restrictions.
+- Admin access restrictions.
+- Role-based permissions.
+- Brute-force protection.
+- Login rate limiting.
+- Account enumeration protection where appropriate.
+
+Never expose passwords or authentication secrets in API responses.
+
+## 5.2 Security headers
+
+Inspect and configure suitable production security headers.
+
+Consider:
+
+- Content-Security-Policy.
+- Strict-Transport-Security.
+- X-Content-Type-Options.
+- Referrer-Policy.
+- Frame protection through CSP or appropriate headers.
+- Permissions-Policy.
+
+Do not deploy an unnecessarily restrictive Content Security Policy that breaks legitimate functionality.
+
+Test the actual production frontend, API, authentication, image loading, and any required OAuth integrations after changing security headers.
+
+## 5.3 HTTPS and TLS verification
+
+Verify the actual deployment architecture.
+
+Inspect:
+
+- Production domain configuration.
+- HTTPS redirects.
+- TLS termination.
+- Reverse proxy behavior.
+- Secure cookies.
+- Cookie SameSite configuration.
+- HSTS configuration.
+- Mixed-content requests.
+- API base URLs.
+- OAuth callback URLs.
+- External image and resource loading.
+
+If deployed behind a platform-managed reverse proxy, correctly configure trusted proxy handling.
+
+Do not blindly force HTTPS in local development.
+
+Do not claim HTTPS is active simply because an application redirects to HTTPS in local code.
+
+Verify the real public deployment when credentials and network access are available.
+
+## 5.4 Secrets and environment configuration
+
+Inspect all environment variable references.
+
+Ensure:
+
+- Admin credentials come from secure environment configuration.
+- Database credentials are never exposed publicly.
+- OAuth secrets are server-side only.
+- Payment credentials are server-side only.
+- SMTP passwords are server-side only.
+- JWT secrets are secure.
+- No real secrets are committed to Git.
+- Sensitive values are not written into logs.
+- Public frontend variables contain no private credentials.
+
+Preserve existing working environment variable names unless a necessary migration is carefully implemented.
+
+Never invent credentials or claim a third-party service is connected without verification.
+
+---
+
+# PHASE 6 — ADVANCED CONVERSATIONAL / NATURAL LANGUAGE SEARCH SYSTEM
+
+Audit the entire existing search system.
+
+The objective is to let customers search using natural language rather than requiring exact product names or keywords.
+
+## 6.1 Understand user intent
+
+Support search queries such as:
+
+- "Show me affordable products."
+- "I need a product for daily use."
+- "Show products similar to the one I viewed."
+- "Find products from this category."
+- "Show me premium quality products."
+- "Products related to my previous searches."
+
+The system should identify meaningful search intent and retrieve relevant products.
+
+## 6.2 Search architecture
+
+Inspect the existing search implementation.
+
+Improve it using an appropriate combination of:
+
+- Text search.
+- Product title matching.
+- Description matching.
+- Category matching.
+- Brand matching.
+- Attribute matching.
+- Synonyms.
+- Typo tolerance.
+- Relevance scoring.
+- Search suggestions.
+- Search history where appropriate.
+- Semantic search or embeddings when genuinely supported.
+
+Do not introduce a costly external AI API without necessity or valid configuration.
+
+If an AI-powered search provider is used, keep its credentials server-side and provide a reliable fallback when unavailable.
+
+## 6.3 Search security and performance
+
+- Validate search input.
+- Limit query length.
+- Prevent query injection.
+- Use indexed search where appropriate.
+- Limit result counts.
+- Implement pagination.
+- Avoid unrestricted database scans.
+- Prevent excessive search requests.
+- Keep search response times reasonable.
+
+## 6.4 Search testing
+
+Test:
+
+- Exact product names.
+- Partial product names.
+- Misspelled queries.
+- Category searches.
+- Brand searches.
+- Natural language queries.
+- Empty queries.
+- No-result queries.
+- Long queries.
+- Bangla and English queries if the catalog supports them.
+
+Never return unrelated products merely to fill a result page.
+
+---
+
+# PHASE 7 — PERSONALIZED PRODUCT RECOMMENDATION ENGINE
+
+Implement or verify a genuine personalized recommendation system.
+
+The system should prioritize products that are relevant to each individual user.
+
+## 7.1 Behavioral signals
+
+Use relevant and lawfully collected signals:
+
+- Product views.
+- Repeated product views.
+- Search queries.
+- Search result clicks.
+- Category browsing.
+- Successful orders.
+- Recent purchase history.
+- Relevant product interactions.
+
+Do not treat every interaction equally.
+
+A successful purchase is a stronger interest signal than an accidental view.
+
+A single search must not permanently dominate recommendations.
+
+## 7.2 Recommendation ranking
+
+Build a transparent relevance-scoring mechanism using:
+
+- Category similarity.
+- Search intent similarity.
+- Product attribute similarity.
+- Purchase history.
+- Browsing history.
+- Recency.
+- Product availability.
+- Catalog quality.
+
+Apply appropriate time decay.
+
+Exclude:
+
+- Deleted products.
+- Unpublished products.
+- Ineligible products.
+- The current product from its own related-product list.
+
+Do not recommend products that cannot be purchased.
+
+## 7.3 New users and guests
+
+For users without sufficient history:
+
+- Use current product context.
+- Use current browsing session.
+- Use relevant category signals.
+- Use sensible popular-product fallback.
+
+Do not display an empty recommendation section merely because a user has no account.
+
+## 7.4 Privacy and data isolation
+
+- Users must not access other users' private activity history.
+- Validate user identity server-side.
+- Use appropriate retention rules.
+- Do not record passwords or payment credentials.
+- Do not collect unnecessary personal information.
+
+---
+
+# PHASE 8 — COMPLETE E-COMMERCE BUSINESS LOGIC VERIFICATION
+
+Inspect all existing shopping workflows.
+
+Verify the following.
+
+## Products and inventory
+
+- Product creation.
+- Product updates.
+- Product deletion or archival.
+- Product publishing.
+- Stock changes.
+- Product images.
+- Category relationships.
+- Product availability.
+
+## Cart
+
+- Add to Cart.
+- Duplicate prevention.
+- Unique product count.
+- Quantity updates.
+- Cart persistence.
+- Cart removal.
+- Cart restoration.
+- Stock validation.
+- Correct totals.
+
+Preserve the established cart rule:
+
+Repeated Add to Cart clicks must not automatically increase an existing product's quantity.
+
+## Checkout and orders
+
+- Address validation.
+- Server-side price verification.
+- Coupon validation.
+- Shipping calculation.
+- Tax calculation if applicable.
+- Order creation.
+- Order status transitions.
+- Inventory updates.
+- Duplicate order prevention.
+- Payment status consistency.
+
+## Bangladesh-specific requirements
+
+Preserve the existing Bangladesh-focused checkout requirements:
+
+- BDT as the application currency.
+- Appropriate Bangladesh address structure.
+- Division, district, upazila/thana and existing address hierarchy where implemented.
+- Correct Bangladesh mobile number validation.
+- COD must remain available according to existing business rules.
+- bKash, Nagad and card payment availability must depend on valid gateway configuration.
+
+Do not accidentally reintroduce USD prices or unwanted international checkout fields.
+
+Do not break existing payment or shipping configuration.
+
+---
+
+# PHASE 9 — PREMIUM WEBSITE RELOAD / INITIAL LOADING ANIMATION
+
+Inspect the existing website's initial loading and reload experience.
+
+This is a visual enhancement, not a replacement for actual application initialization.
+
+## 9.1 First inspect existing implementation
+
+Determine:
+
+- Whether a reload animation already exists.
+- Whether a global loading screen exists.
+- Whether route transitions already have loading states.
+- Whether existing animations are reusable.
+- Whether loading state is correctly connected to application readiness.
+
+### Required decision
+
+If no suitable loading animation exists, implement a premium initial loading experience.
+
+If one already exists, do not create a duplicate system.
+
+Improve the existing implementation only when a real quality problem is identified.
+
+If the existing animation is already premium and reliable, preserve it.
+
+## 9.2 Premium visual concept
+
+Create a premium loading experience that matches the existing homepage brand identity.
+
+The design should include:
+
+- Elegant full-screen backdrop.
+- A clean, premium visual surface.
+- Brand logo or approved existing logo asset.
+- A circular progress indicator.
+- Smooth circular progress animation.
+- Subtle glow or gradient treatment.
+- Refined typography.
+- A short brand-aligned loading message.
+- Smooth entrance and exit transitions.
+
+The logo should remain visually prominent.
+
+The circular indicator should animate smoothly around or near the logo.
+
+Use the actual brand logo from the project.
+
+Do not invent a new logo or replace the brand identity.
+
+Do not use random external images.
+
+## 9.3 Genuine loading state
+
+The animation must reflect actual application readiness as far as technically possible.
+
+Do not fake a 100% progress completion while the application is still unavailable.
+
+If actual percentage progress cannot be measured, use an honest indeterminate circular animation rather than pretending to report exact progress.
+
+The loading overlay should:
+
+1. Appear when the application genuinely needs initial loading.
+2. Remain visible while critical initialization is in progress.
+3. Disappear when the application is ready or when a recoverable error state is presented.
+4. Avoid unnecessary delays.
+5. Never block the application permanently.
+
+## 9.4 Technical and accessibility requirements
+
+- Do not intercept or break browser refresh behavior.
+- Do not modify browser history incorrectly.
+- Do not create an infinite loading loop.
+- Do not show a full-screen loader on every minor state update.
+- Do not show unnecessary loading animations during normal component re-renders.
+- Support reduced-motion preferences.
+- Preserve keyboard and screen-reader accessibility.
+- Avoid layout shifts.
+- Keep animation lightweight.
+- Ensure the overlay works on desktop and mobile.
+
+If an application initialization error occurs, show an appropriate recovery or retry experience instead of hiding the error behind an endless animation.
+
+---
+
+# PHASE 10 — PERFORMANCE AND PRODUCTION RELIABILITY
+
+Audit the entire application for performance problems.
+
+Inspect:
+
+- Bundle size.
+- Dependency usage.
+- Duplicate dependencies.
+- Unnecessary renders.
+- Memory leaks.
+- Unhandled promises.
+- Event listener cleanup.
+- Database query efficiency.
+- N+1 queries.
+- API latency.
+- Pagination.
+- Image loading.
+- Cache behavior.
+- Server resource usage.
+- Logging volume.
+
+Implement only justified optimizations.
+
+Do not sacrifice correctness for superficial benchmark improvements.
+
+Ensure the application handles:
+
+- Slow network conditions.
+- Backend errors.
+- Database disconnection.
+- Expired authentication.
+- Empty results.
+- Large product catalogs.
+- Repeated requests.
+- Concurrent operations.
+
+Use appropriate loading, error, retry, and empty states.
+
+---
+
+# PHASE 11 — TEST THE ENTIRE APPLICATION
+
+Do not rely only on frontend screenshots.
+
+Use actual automated tests and real API/database verification wherever available.
+
+## 11.1 Static checks
+
+Run:
+
+- TypeScript checks.
+- Linting.
+- Build validation.
+- Dependency and configuration checks.
+- Existing test suites.
+
+## 11.2 Backend integration tests
+
+Verify:
+
+- Authentication APIs.
+- Authorization.
+- Product APIs.
+- Category APIs.
+- Cart APIs.
+- Checkout APIs.
+- Order APIs.
+- Search APIs.
+- Recommendation APIs.
+- Banner APIs.
+- Admin APIs.
+- Settings APIs.
+
+## 11.3 Database tests
+
+Verify:
+
+- Actual record creation.
+- Actual record updates.
+- Actual deletion or archival.
+- Unique constraints.
+- Validation failures.
+- Persistence after reload.
+- Relationship integrity.
+- Concurrent operations where relevant.
+
+Use isolated test data and never damage production records.
+
+## 11.4 Admin end-to-end tests
+
+For every discovered admin module, test its supported operations.
+
+Record the result of every relevant CRUD operation.
+
+Do not report an admin module as fully functional if only its page has been opened.
+
+## 11.5 Playwright / browser tests
+
+Use the existing browser testing setup where available.
+
+Test representative user journeys:
+
+1. Open homepage.
+2. Browse categories.
+3. Search products.
+4. Open Product Details.
+5. Add a product to Cart.
+6. Change quantity.
+7. Complete checkout where safe test configuration exists.
+8. Verify order creation.
+9. Open account and order history.
+10. Open protected Admin Panel.
+11. Create and update a test product.
+12. Verify public product visibility.
+13. Update a banner and verify public rendering.
+14. Verify settings persistence.
+
+Also test mobile and desktop layouts.
+
+## 11.6 Production build and runtime verification
+
+Run the actual production build.
+
+Start the application using its real configured production startup command in an appropriate test environment.
+
+Verify health endpoints, API responses, frontend assets, and critical workflows.
+
+Do not treat a development server starting successfully as proof of production readiness.
+
+---
+
+# PHASE 12 — SAFE IMPLEMENTATION STRATEGY
+
+Follow this implementation sequence:
+
+### Stage A — Audit
+- Repository inventory.
+- Architecture mapping.
+- Admin module inventory.
+- Root-cause analysis.
+- Security audit.
+- Database audit.
+- Issue prioritization.
+
+### Stage B — Critical fixes
+- Critical backend bugs.
+- Authentication and authorization issues.
+- Database integrity issues.
+- Broken CRUD operations.
+- Payment and checkout correctness.
+- Security vulnerabilities.
+
+### Stage C — Core application improvements
+- Search.
+- Recommendations.
+- Cart consistency.
+- Product behavior.
+- Admin functionality.
+- Validation.
+
+### Stage D — Experience improvements
+- Premium loading/reload animation.
+- Loading and error states.
+- Responsive behavior.
+- Performance.
+- Accessibility.
+
+### Stage E — Verification
+- Unit tests.
+- Integration tests.
+- E2E tests.
+- Database verification.
+- Production build.
+- Deployment checks.
+
+Do not skip earlier stages to work on visual improvements while critical security or data-integrity issues remain.
+
+---
+
+# PHASE 13 — REQUIRED DOCUMENTATION
+
+Create the following actual reports after completing the work:
+
+1. `COMPLETE-PROJECT-ARCHITECTURE-AUDIT.md`
+   - Repository inventory.
+   - Architecture.
+   - Existing problems.
+   - Root causes.
+   - Modified files.
+
+2. `ADMIN-PANEL-COMPLETE-CRUD-AUDIT.md`
+   - All discovered admin modules.
+   - Create/read/update/delete test results.
+   - Database persistence.
+   - Permission verification.
+
+3. `DATABASE-SCHEMA-AND-INTEGRITY-AUDIT.md`
+   - Schema validation.
+   - Indexes.
+   - Relationships.
+   - Migrations.
+   - Data integrity.
+
+4. `SECURITY-AND-HTTPS-PRODUCTION-AUDIT.md`
+   - Authentication.
+   - Authorization.
+   - Input validation.
+   - Security headers.
+   - Secrets.
+   - HTTPS/TLS verification.
+   - Remaining risks.
+
+5. `CONVERSATIONAL-SEARCH-AND-RECOMMENDATION-REPORT.md`
+   - Search architecture.
+   - Natural-language understanding.
+   - Ranking.
+   - User behavior tracking.
+   - Privacy.
+   - Test results.
+
+6. `PREMIUM-APPLICATION-LOADING-EXPERIENCE-REPORT.md`
+   - Existing loading implementation.
+   - Improvements or new implementation.
+   - Actual readiness behavior.
+   - Accessibility.
+   - Mobile compatibility.
+
+7. `PERFORMANCE-AND-RELIABILITY-AUDIT.md`
+   - Performance bottlenecks.
+   - Optimizations.
+   - Reliability.
+   - Error handling.
+
+8. `FINAL-END-TO-END-PRODUCTION-VERIFICATION.md`
+   - Tests executed.
+   - Passed tests.
+   - Failed tests.
+   - Build results.
+   - Database verification.
+   - Deployment verification.
+   - Remaining blockers.
+   - Final readiness assessment.
+
+All reports must contain actual findings and evidence.
+
+Never fabricate successful tests or claim unverified functionality.
+
+---
+
+# STRICT NON-NEGOTIABLE ENGINEERING RULES
+
+1. Read and understand the existing project before changing code.
+2. Inventory all project-owned files.
+3. Inspect every existing Admin Panel module.
+4. Identify actual root causes.
+5. Do not rewrite the entire project unnecessarily.
+6. Do not make blind global replacements.
+7. Do not delete core files.
+8. Do not disable existing tests.
+9. Do not weaken validation to make tests pass.
+10. Do not introduce fake backend functionality.
+11. Do not use frontend-only persistence for database-backed settings.
+12. Do not create fake product data.
+13. Do not expose secrets.
+14. Do not trust frontend validation.
+15. Do not bypass backend authorization.
+16. Do not perform destructive database migrations.
+17. Do not break existing payment integrations.
+18. Do not break existing authentication.
+19. Do not break existing cart behavior.
+20. Do not break dynamic banner management.
+21. Do not break product uploads or image storage.
+22. Do not introduce unnecessary paid services.
+23. Do not create duplicate loading animation systems.
+24. Do not report HTTPS as verified without checking the actual deployment.
+25. Do not claim production readiness based only on a successful build.
+26. Preserve the existing brand identity and established business requirements.
+
+If a feature is already implemented correctly, preserve it.
+
+If an issue is not reproducible, investigate further rather than inventing a fix.
+
+If a fix requires external credentials, third-party services, or production access that is unavailable, implement what can safely be completed and report the exact remaining verification requirement.
+
+---
+
+# FINAL ACCEPTANCE CRITERIA
+
+The task is complete only when:
+
+- [ ] Complete project-owned repository inventory is performed.
+- [ ] Existing architecture is documented.
+- [ ] All relevant frontend files are inspected.
+- [ ] All relevant backend files are inspected.
+- [ ] Database schemas and operations are inspected.
+- [ ] Every discovered Admin Panel module is audited.
+- [ ] Supported CRUD operations are verified end to end.
+- [ ] Admin settings persist in the database.
+- [ ] Backend authorization is verified.
+- [ ] Schema validation is implemented consistently.
+- [ ] Input security is verified.
+- [ ] Database integrity is verified.
+- [ ] Authentication and session security are verified.
+- [ ] HTTPS/TLS configuration is checked against the real deployment where accessible.
+- [ ] Security headers are configured and tested.
+- [ ] Secrets are protected.
+- [ ] Conversational / Natural Language Search works correctly.
+- [ ] Search results are relevant.
+- [ ] Personalized recommendations use real user activity.
+- [ ] Recommendation privacy is respected.
+- [ ] Cart behavior remains correct.
+- [ ] Checkout and order creation remain correct.
+- [ ] Existing BDT and Bangladesh checkout requirements remain intact.
+- [ ] Premium application loading experience is implemented or existing experience is verified and improved where needed.
+- [ ] Loading animation does not block the application.
+- [ ] Production performance is reviewed.
+- [ ] Accessibility is checked.
+- [ ] Relevant unit tests pass.
+- [ ] Integration tests pass.
+- [ ] Admin E2E tests pass.
+- [ ] Critical customer journey tests pass.
+- [ ] Production build succeeds.
+- [ ] Remaining blockers are documented honestly.
+
+---
+
+# FINAL EXECUTION DIRECTIVE
+
+Begin by inspecting the repository and understanding the complete architecture.
+
+**DO NOT START BY RANDOMLY EDITING FILES.**
+
+First return a structured audit summary containing:
+
+1. Project architecture.
+2. Total project-owned files inventoried.
+3. Existing application modules.
+4. Complete Admin Panel menu and page inventory.
+5. Critical and high-priority problems.
+6. Database and schema validation status.
+7. Security and HTTPS status.
+8. Search and recommendation status.
+9. Existing loading/reload animation status.
+10. Files that require modification.
+11. Phased implementation plan.
+
+After presenting the audit, proceed with the actual implementation.
+
+Do not stop after presenting findings.
+
+Fix verified problems systematically.
+
+After each implementation phase, run relevant tests before moving to the next phase.
+
+When the work is complete, provide a final evidence-based report.
+
+Separate the results into:
+
+- Successfully implemented.
+- Successfully tested.
+- Partially implemented.
+- Not verified due to unavailable access or credentials.
+- Failed tests.
+- Remaining production risks.
+
+**ULTIMATE OBJECTIVE: Deliver a fully functional, secure, database-consistent, professionally engineered, high-performance production e-commerce platform—not merely a visually successful frontend demo.**

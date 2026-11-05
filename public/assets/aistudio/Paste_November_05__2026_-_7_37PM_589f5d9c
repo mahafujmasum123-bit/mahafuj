@@ -1,0 +1,1070 @@
+# MASTER PROMPT: COMPLETE BANGLADESH E-COMMERCE MIGRATION, BDT CURRENCY STANDARDIZATION, DYNAMIC BD ADDRESS SYSTEM, PAYMENT INTEGRATION & EMAIL VERIFICATION REMOVAL
+
+## ROLE & RESPONSIBILITY
+
+Act as a Senior Full-Stack Software Architect, Principal Backend Engineer, Database Engineer, Payment Integration Specialist, Security Engineer, and QA Automation Engineer.
+
+You are working on an existing production-oriented e-commerce application originally generated using Google AI Studio.
+
+Your responsibility is to thoroughly inspect, understand, migrate, improve, implement, and verify the existing application.
+
+This is NOT a frontend redesign task.
+
+This is a complete full-stack business logic and infrastructure migration.
+
+The application must become a Bangladesh-focused e-commerce platform that uses BDT as its only active currency, Bangladesh-only delivery addresses, properly integrated payment processing, and an authentication system without mandatory email verification.
+
+**CRITICAL RULE: Do not report a feature as completed merely because its frontend looks correct. Every feature must work correctly across the frontend, backend, API, database, and relevant third-party integrations.**
+
+---
+
+# PHASE 1: COMPLETE PROJECT REPOSITORY AUDIT
+
+Before modifying anything, inspect the entire project.
+
+Do not immediately start editing files.
+
+First understand the complete architecture and identify every relevant implementation.
+
+Inspect:
+
+- All frontend source files.
+- All backend source files.
+- All API routes and controllers.
+- All services and business logic.
+- All database schemas and models.
+- All database migrations and scripts.
+- Authentication and authorization middleware.
+- Payment processing modules.
+- Cart and checkout systems.
+- Order management.
+- Product and pricing systems.
+- Coupon and discount logic.
+- Shipping and delivery calculations.
+- Admin dashboard.
+- Analytics and reporting.
+- Email services and templates.
+- Configuration and environment handling.
+- Background jobs and scheduled tasks.
+- Tests and test utilities.
+- Deployment configuration.
+- Documentation.
+
+Search the entire repository for:
+
+- USD
+- $
+- US Dollar
+- Currency
+- Exchange Rate
+- Price
+- Amount
+- Total
+- Subtotal
+- Discount
+- Tax
+- Shipping
+- Payment
+- Refund
+- Revenue
+- Sales
+- Email Verification
+- Verification Token
+- OTP
+- Email Confirmation
+- Country Selector
+- International Address
+- Currency Conversion
+
+Inspect hidden and nested application directories where appropriate.
+
+Do not blindly edit files based on search results. Understand the context and determine whether each occurrence is actual application functionality, historical documentation, test fixtures, third-party code, or unrelated content.
+
+Create an implementation plan and identify potential backward-compatibility risks before proceeding.
+
+Preserve all existing working features that are unrelated to this migration.
+
+Do not delete core files, rewrite the entire application, or replace working architecture unnecessarily.
+
+---
+
+# PHASE 2: COMPLETE USD REMOVAL AND BDT STANDARDIZATION
+
+The entire business operates in Bangladesh.
+
+BDT (Bangladeshi Taka) must become the only active application currency.
+
+Currency code: BDT
+
+Currency symbol: ৳
+
+Currency display example: ৳1,250.00
+
+Currency locale: en-BD or an appropriate Bangladeshi locale.
+
+## 2.1 Frontend Currency Migration
+
+Update every relevant frontend component:
+
+- Homepage product prices.
+- Product listing cards.
+- Product detail pages.
+- Search results.
+- Related products.
+- Cart page.
+- Mini-cart and cart summaries.
+- Checkout page.
+- Order confirmation.
+- Order history.
+- Wishlist, if it displays prices.
+- Product comparison.
+- Coupons and discounts.
+- Shipping charges.
+- Refund information.
+- Invoice pages.
+- Admin dashboard.
+- Analytics charts.
+- Reports.
+- Email previews.
+- Notifications.
+
+Remove USD-specific formatting and replace it with consistent BDT formatting.
+
+Do not merely replace the $ symbol with ৳.
+
+Make sure all displayed values originate from correctly calculated backend data.
+
+## 2.2 Backend Currency Migration
+
+Inspect all backend calculations and remove the assumption that application prices are USD.
+
+Update:
+
+- Product pricing.
+- Variant pricing.
+- Cart calculations.
+- Checkout calculations.
+- Order totals.
+- Coupon calculations.
+- Discount calculations.
+- Shipping calculations.
+- Payment amounts.
+- Refund calculations.
+- Revenue calculations.
+- Admin statistics.
+- Sales analytics.
+
+Use a consistent currency-aware monetary architecture.
+
+Store monetary values using integer minor units (poisha) where appropriate, or another rigorously validated decimal-safe representation.
+
+Avoid JavaScript floating-point errors in financial calculations.
+
+For example:
+
+৳100.50 must never become ৳100.499999 or ৳100.500001 because of floating-point arithmetic.
+
+All calculations must follow one consistent rounding policy.
+
+The backend must be the authoritative source for all financial calculations.
+
+Never trust frontend-submitted product prices, discounts, shipping fees, or order totals.
+
+Recalculate all values using trusted database records and validated business rules.
+
+## 2.3 Database Currency Migration
+
+Inspect all existing database models and stored documents.
+
+Identify every collection that contains monetary values.
+
+Potential collections include:
+
+- Products.
+- Product variants.
+- Carts.
+- Orders.
+- Order items.
+- Coupons.
+- Payments.
+- Transactions.
+- Refunds.
+- Shipping settings.
+- Store settings.
+- Admin reports.
+
+Create a safe and versioned database migration.
+
+IMPORTANT:
+
+Existing USD prices must be converted using one explicitly approved exchange rate.
+
+Do not invent or automatically fetch an exchange rate.
+
+Use a clearly documented configurable migration rate.
+
+Preserve:
+
+- Original monetary values.
+- Original currency.
+- Converted BDT values.
+- Migration version.
+- Migration status.
+- Conversion rate used.
+- Migration timestamp.
+
+Prevent duplicate conversion.
+
+Running the migration multiple times must not convert an already migrated BDT value again.
+
+Provide:
+
+- Dry-run mode.
+- Conversion preview.
+- Record count.
+- Validation report.
+- Backup recommendation.
+- Execution mode.
+- Rollback or recovery strategy.
+
+Do not overwrite historical completed order financial records without a documented business-approved migration policy.
+
+Historical orders must remain financially auditable.
+
+Existing USD orders should preserve their original transaction currency and historical financial meaning if changing them would corrupt accounting records. However, all new business transactions must use BDT.
+
+If an existing record cannot be safely migrated, flag it for manual review rather than guessing.
+
+## 2.4 Permanent Currency Architecture
+
+Remove all active multi-currency switching functionality.
+
+Remove currency selectors and USD conversion controls from the customer-facing application and admin settings where they are no longer relevant.
+
+Do not leave an active USD pricing pathway in product creation, checkout, payment, or order creation.
+
+Ensure new products and new orders use BDT consistently.
+
+---
+
+# PHASE 3: BANGLADESH-ONLY ADDRESS SYSTEM
+
+Completely remove the international Country Selection system from the checkout address form.
+
+The application operates in Bangladesh only.
+
+Do not show a country selector or allow another country to be selected.
+
+## 3.1 Required Address Structure
+
+The address form must contain:
+
+1. Full Name
+2. Mobile Number
+3. Email Address
+4. Division
+5. District
+6. Upazila / Thana
+7. Union / Ward
+8. Village / Area / Road / House Details
+
+Country must be Bangladesh internally.
+
+It does not need to be displayed as a customer-selectable field.
+
+## 3.2 Dynamic Bangladesh Administrative Location Dropdowns
+
+Implement a genuine dynamic administrative location system.
+
+Use the Bangladesh administrative hierarchy:
+
+Division → District → Upazila / Thana → Union / Ward.
+
+The location data must come from a reliable Bangladesh administrative dataset or a verified location source.
+
+Do not hardcode a few sample divisions, districts, or unions.
+
+Do not generate fake administrative locations.
+
+Do not use an unreliable external API without handling availability and data consistency.
+
+Prefer a locally stored, versioned Bangladesh administrative dataset that can be maintained and updated.
+
+The database must support proper parent-child relationships between locations.
+
+## 3.3 Required Dropdown Behaviour
+
+Implement the following:
+
+**Division:**
+- Display all verified Bangladesh divisions.
+- Allow the customer to select one division.
+
+**District:**
+- Initially disabled until a division is selected.
+- After division selection, show only districts belonging to that division.
+
+**Upazila / Thana:**
+- Initially disabled until a district is selected.
+- Display only the upazilas or applicable metropolitan thana entries belonging to the selected district.
+
+**Union / Ward:**
+- Initially disabled until the appropriate parent administrative location is selected.
+- Display only the unions or applicable wards belonging to the selected upazila/thana.
+
+If an area does not use a union structure, support an appropriate Ward or area-level alternative.
+
+Do not force a city corporation customer to select a nonexistent union.
+
+## 3.4 Data Integrity
+
+The frontend must not be the only place enforcing location relationships.
+
+The backend must independently validate:
+
+- Division exists.
+- District belongs to selected division.
+- Upazila/Thana belongs to selected district.
+- Union/Ward belongs to selected Upazila/Thana.
+
+Reject invalid combinations.
+
+Store stable location IDs alongside readable location names where appropriate.
+
+Preserve existing customer addresses through a safe migration strategy.
+
+Ensure previously saved addresses remain editable and usable after migration.
+
+## 3.5 Address Management
+
+Maintain the existing address-management functionality.
+
+Customers should be able to:
+
+- Add a new address.
+- Edit an address.
+- Delete an address.
+- Select a saved address.
+- Set a default address.
+
+After the first successful order, the previously selected delivery address should remain available for the next checkout.
+
+Customers must be able to change it whenever necessary.
+
+Never silently overwrite a customer's saved address.
+
+---
+
+# PHASE 4: REAL PAYMENT SYSTEM INTEGRATION
+
+Payment functionality must be real, secure, and backend-driven.
+
+A frontend payment button is not a completed payment integration.
+
+## 4.1 Cash on Delivery
+
+Cash on Delivery must always remain available.
+
+It must work independently of external payment gateway credentials.
+
+Required behaviour:
+
+- Customer selects COD.
+- Backend validates cart and order information.
+- Backend recalculates the final order amount.
+- Order is created successfully.
+- Payment method is recorded as COD.
+- Payment status is initially unpaid or pending.
+- Order status follows the existing valid order lifecycle.
+- Admin can manage the order.
+- After actual collection of money, authorized staff can mark it as paid.
+
+Never mark a COD order as paid merely because the order was placed.
+
+## 4.2 bKash Integration
+
+Implement a genuine bKash payment integration using the official supported merchant/payment gateway API.
+
+Requirements:
+
+- Environment-based credentials.
+- Secure token management.
+- Backend payment initiation.
+- Payment execution.
+- Transaction verification.
+- Transaction ID storage.
+- Callback validation.
+- Payment status synchronization.
+- Duplicate callback protection.
+- Failed payment handling.
+- Pending payment handling.
+- Refund support where available.
+
+Never expose merchant secrets, application secrets, or private credentials to the frontend.
+
+## 4.3 Nagad Integration
+
+Implement Nagad using its official merchant integration documentation and credentials.
+
+Requirements:
+
+- Secure backend initiation.
+- Transaction tracking.
+- Signature verification.
+- Callback verification.
+- Transaction status verification.
+- Duplicate transaction protection.
+- Failure handling.
+- Refund handling where supported.
+
+Do not invent API endpoints or cryptographic signatures.
+
+## 4.4 Debit / Credit Card
+
+Support a legitimate payment gateway that provides card processing in Bangladesh, subject to merchant eligibility and approved credentials.
+
+Use the gateway's official API and documented verification process.
+
+Do not store raw card numbers, CVV, or sensitive card credentials.
+
+Use hosted checkout or tokenized processing where supported.
+
+## 4.5 Payment Availability Rules
+
+Payment methods must be controlled by backend configuration.
+
+Rules:
+
+- COD: always available.
+- bKash: available only when correctly configured and enabled.
+- Nagad: available only when correctly configured and enabled.
+- Card: available only when correctly configured and enabled.
+
+If credentials are missing or incomplete, hide or disable the corresponding payment option with an appropriate explanation.
+
+Never show a payment method as working when it cannot actually process payments.
+
+Do not break checkout when only COD is configured.
+
+## 4.6 Payment Security
+
+Implement:
+
+- Server-side amount verification.
+- Gateway callback verification.
+- Signature validation.
+- Idempotency.
+- Transaction uniqueness.
+- Payment/order relationship validation.
+- Secure credential handling.
+- Payment audit logs.
+- Rate limiting where appropriate.
+- Protection against replay and duplicate payment requests.
+
+A successful frontend redirect is not proof of payment.
+
+Only a verified backend gateway response can mark an online payment as successful.
+
+Do not expose secrets in API responses or application logs.
+
+## 4.7 Payment Environment Documentation
+
+Update `.env.example` with the required variable names and descriptions.
+
+Do not insert fake production credentials.
+
+Separate sandbox and production configurations.
+
+Clearly document which credentials are required for each provider.
+
+If gateway credentials are unavailable, implement and test the integration architecture in sandbox/mock environments where appropriate, but explicitly report that live transactions remain unverified.
+
+---
+
+# PHASE 5: REMOVE ACCOUNT EMAIL VERIFICATION COMPLETELY
+
+The application must no longer require email verification to create or access an account.
+
+This is a deliberate business requirement.
+
+Perform a complete authentication-system audit.
+
+Inspect:
+
+- Registration routes.
+- Login routes.
+- Authentication controllers.
+- User models.
+- Verification token models.
+- OTP models.
+- Email verification services.
+- Verification middleware.
+- Frontend authentication state.
+- Account creation forms.
+- Login forms.
+- Registration popups.
+- Verification pages.
+- Email templates.
+- Resend verification routes.
+- Scheduled verification jobs.
+- Related database indexes.
+- API documentation.
+- Tests.
+
+## 5.1 Remove Email Verification
+
+Completely remove the following active functionality:
+
+- Email verification requirement during registration.
+- Verification OTP generation.
+- Verification token generation.
+- Verification links.
+- Verification email sending.
+- Resend verification functionality.
+- Email verification pages.
+- Email verification popups.
+- Verification-required login restrictions.
+- Mandatory `isEmailVerified` checks.
+- Middleware that blocks unverified accounts.
+- Expiration checks associated exclusively with email verification.
+- Unnecessary verification database records and services.
+
+Newly registered customers must be able to use their accounts immediately after successful registration.
+
+Existing users must also be able to log in without being blocked by an old email-verification status.
+
+Do not delete user accounts or password hashes.
+
+Do not break existing authentication sessions unnecessarily.
+
+## 5.2 Preserve Essential Email Functionality
+
+IMPORTANT: Removing account email verification does NOT mean removing the entire email system.
+
+Preserve the following where already implemented or required:
+
+- Password reset.
+- Forgot password.
+- Order confirmation emails.
+- Order status notification emails.
+- Payment notifications.
+- Refund notifications.
+- Admin order notifications.
+- Transactional email templates.
+
+Password reset must use its own secure, single-use, expiring reset token.
+
+Do not reuse email verification tokens for password reset.
+
+Never expose password reset tokens in public API responses.
+
+---
+
+# PHASE 6: ORDER MANAGEMENT AND DATABASE CONSISTENCY
+
+Ensure all new orders are genuinely persisted in the database.
+
+Audit the entire order lifecycle.
+
+Expected lifecycle should support the existing business workflow, including applicable states such as:
+
+- Pending.
+- Confirmed.
+- Processing.
+- Shipped.
+- Delivered.
+- Cancelled.
+- Returned.
+- Refunded.
+
+Do not create duplicate or incompatible order status systems.
+
+Ensure:
+
+1. Customer submits checkout.
+2. Backend validates customer identity.
+3. Backend retrieves current product data.
+4. Backend checks product availability and stock.
+5. Backend recalculates all financial values in BDT.
+6. Backend validates delivery address.
+7. Backend validates selected payment method.
+8. Order is persisted.
+9. Stock changes are handled consistently.
+10. Payment record is created when applicable.
+11. Customer can see the real order.
+12. Admin can see and manage the same order.
+13. Status updates persist in the database.
+14. Customer-facing order history reflects actual backend state.
+
+Use MongoDB transactions where supported and appropriate.
+
+If transactions are unavailable in the current deployment configuration, implement safe compensating operations and consistency checks.
+
+Prevent duplicate order submission through idempotency or another robust mechanism.
+
+Never trust client-submitted order totals.
+
+Ensure cancelled and refunded orders do not incorrectly inflate revenue.
+
+---
+
+# PHASE 7: ADMIN DASHBOARD AND ANALYTICS
+
+The admin dashboard must display actual backend/database information.
+
+Do not use hardcoded sample values or mock statistics in production.
+
+Verify:
+
+- Total orders.
+- Total sales.
+- Total revenue.
+- Paid revenue.
+- Unpaid order value.
+- COD orders.
+- Online payment orders.
+- Payment method breakdown.
+- Pending orders.
+- Completed orders.
+- Cancelled orders.
+- Refund totals.
+- Daily sales.
+- Weekly sales.
+- Monthly sales.
+- Best-selling products.
+
+All monetary metrics must use BDT.
+
+## Analytics Rules
+
+Clearly distinguish:
+
+- Gross sales.
+- Net revenue.
+- Paid revenue.
+- Pending payment value.
+- Refunded amounts.
+- Cancelled orders.
+
+Do not count unpaid COD orders as collected cash.
+
+Do not count failed online payments as successful revenue.
+
+Make sure chart data is generated from actual backend aggregation queries.
+
+Verify that date filters work correctly.
+
+Verify that admin-only endpoints require proper authorization.
+
+Preserve existing admin functionality and permissions.
+
+---
+
+# PHASE 8: ADMIN SETTINGS AND ENVIRONMENT CONFIGURATION
+
+Audit the existing General, Payment, Shipping, and Email settings.
+
+Ensure that settings are persisted through the backend and database where appropriate.
+
+Do not implement settings that only change local frontend state.
+
+Payment secrets must be stored securely and must never be returned in full to the frontend.
+
+Environment variables must be validated at application startup.
+
+Do not overwrite production settings with development defaults.
+
+If a setting is not configurable through the current architecture, document the limitation rather than pretending it works.
+
+---
+
+# PHASE 9: DATABASE MIGRATIONS AND BACKWARD COMPATIBILITY
+
+Before running any destructive migration:
+
+- Identify affected collections.
+- Count affected records.
+- Verify existing schemas.
+- Create a backup/recovery recommendation.
+- Provide a dry-run report.
+- Preserve historical order data.
+- Ensure migrations are versioned.
+- Ensure migrations are idempotent.
+
+Do not drop entire collections.
+
+Do not delete customer accounts.
+
+Do not reset product inventory.
+
+Do not overwrite existing orders.
+
+Do not delete unrelated database fields.
+
+Do not run production migrations automatically without an explicit safe execution process.
+
+Create clear migration documentation explaining:
+
+- What changes.
+- Which collections are affected.
+- What data is converted.
+- What data is preserved.
+- How to execute.
+- How to verify.
+- How to recover from failure.
+
+---
+
+# PHASE 10: SECURITY AND PRODUCTION QUALITY
+
+Review the implementation for:
+
+- Broken access control.
+- Authentication bypass.
+- Authorization errors.
+- Payment manipulation.
+- Price manipulation.
+- Invalid address injection.
+- Duplicate orders.
+- Duplicate payments.
+- Sensitive information exposure.
+- Missing input validation.
+- Missing database constraints.
+- Insecure environment configuration.
+- CORS issues.
+- CSP issues.
+- API error handling.
+- Rate limiting.
+- Logging of sensitive information.
+
+Ensure:
+
+- Customer routes are protected.
+- Admin routes are protected.
+- Payment endpoints are protected.
+- Sensitive configuration is never exposed.
+- Backend validation is authoritative.
+- Error messages are useful but do not expose secrets.
+- Production logs do not leak credentials or personal information.
+
+Do not weaken security to make tests pass.
+
+---
+
+# PHASE 11: FULL FRONTEND, BACKEND AND DATABASE TESTING
+
+After implementation, execute actual tests.
+
+Do not rely only on code inspection.
+
+## 11.1 Build and Type Checking
+
+Run the project's actual commands for:
+
+- TypeScript type checking.
+- Frontend production build.
+- Backend build.
+- Linting.
+- Unit tests.
+- Integration tests.
+- Existing regression tests.
+
+Fix genuine issues introduced by this migration.
+
+Do not hide errors or disable tests to produce a passing result.
+
+## 11.2 Currency Tests
+
+Verify:
+
+- New product prices use BDT.
+- Cart totals use BDT.
+- Checkout totals use BDT.
+- Discounts use BDT.
+- Shipping uses BDT.
+- Payment amounts use BDT.
+- Order records use BDT.
+- Admin revenue uses BDT.
+- Invoice values use BDT.
+- Refund calculations are correct.
+- Migration does not run twice.
+- Historical orders remain accurate.
+
+Test decimal values and rounding.
+
+## 11.3 Address Tests
+
+Verify:
+
+- Every division is available.
+- District filtering works.
+- Upazila/thana filtering works.
+- Union/ward filtering works.
+- Invalid parent-child combinations are rejected by the backend.
+- Saved addresses persist.
+- Address editing works.
+- Default address selection works.
+- Checkout uses the selected address.
+- Country selector is absent.
+
+## 11.4 Authentication Tests
+
+Verify:
+
+- New registration works without email verification.
+- Login works immediately after registration.
+- Existing accounts remain accessible.
+- Old verification flags do not block authentication.
+- No verification email is sent.
+- No verification OTP is generated.
+- Password reset still works.
+- Protected routes remain protected.
+- Admin authorization still works.
+
+## 11.5 Payment Tests
+
+Verify:
+
+- COD works without gateway credentials.
+- COD orders are initially unpaid.
+- Missing bKash credentials prevent bKash from appearing as available.
+- Missing Nagad credentials prevent Nagad from appearing as available.
+- Gateway initiation works in the supported test environment.
+- Invalid callbacks are rejected.
+- Duplicate callbacks do not duplicate transactions.
+- Failed payments do not become paid.
+- Successful payments require backend verification.
+- Amount mismatch is rejected.
+- Order and payment records remain consistent.
+
+Never simulate a successful real-world transaction and report it as a verified live payment.
+
+## 11.6 Order and Admin Tests
+
+Verify:
+
+- Order creation.
+- Order persistence.
+- Customer order history.
+- Admin order visibility.
+- Admin status updates.
+- Stock handling.
+- Cancellation.
+- Refund processing.
+- Analytics accuracy.
+- Revenue calculations.
+- Payment breakdown.
+- BDT formatting.
+
+Use a dedicated test database.
+
+Never place test orders in the real production database.
+
+## 11.7 End-to-End Browser Tests
+
+Use Playwright or the existing browser testing framework.
+
+Test realistic customer journeys:
+
+1. Open the homepage.
+2. Browse products.
+3. Open a product.
+4. Create an account without email verification.
+5. Log in.
+6. Add a product to the cart.
+7. Select a Bangladesh delivery address.
+8. Complete checkout using COD.
+9. Verify that the order exists in the database.
+10. Log in as admin.
+11. Find the same order.
+12. Update its status.
+13. Verify the customer can see the updated status.
+14. Verify analytics reflect the correct order and payment state.
+
+Also test the online payment sandbox flows when credentials are available.
+
+---
+
+# PHASE 12: FINAL REPOSITORY SCAN AND REGRESSION AUDIT
+
+After all implementation and testing are complete, scan the entire repository again.
+
+Search for remaining active references to:
+
+- USD.
+- Dollar symbols.
+- International currency selectors.
+- Currency conversion.
+- Country selection.
+- Mandatory email verification.
+- Verification-only OTP.
+- Verification-only routes.
+- Verification-only middleware.
+
+Classify remaining references as:
+
+1. Active bug.
+2. Historical data.
+3. Documentation.
+4. Test fixture.
+5. Third-party dependency.
+6. Intentionally retained compatibility code.
+
+Remove obsolete active functionality without damaging historical records or unrelated features.
+
+Check for:
+
+- Broken imports.
+- Unused code introduced by the migration.
+- Missing environment variables.
+- Invalid API references.
+- Type errors.
+- Runtime errors.
+- Broken navigation.
+- Database inconsistencies.
+- Frontend/backend contract mismatches.
+
+Do not delete unrelated files just because they appear unused without verifying their purpose.
+
+---
+
+# PHASE 13: REQUIRED FINAL DOCUMENTATION
+
+Create the following documents:
+
+### 1. BANGLADESH-MIGRATION-REPORT.md
+
+Include:
+- Original architecture.
+- Changes implemented.
+- Files modified.
+- Backend changes.
+- Frontend changes.
+- Database changes.
+- API changes.
+- Address migration.
+- Payment integration status.
+- Authentication changes.
+
+### 2. CURRENCY-MIGRATION-REPORT.md
+
+Include:
+- Original USD data analysis.
+- Approved exchange rate.
+- Converted record counts.
+- Unconverted record counts.
+- Historical data preservation.
+- Migration version.
+- Dry-run results.
+- Execution status.
+- Verification results.
+
+### 3. PAYMENT-INTEGRATION-REPORT.md
+
+Include:
+- COD implementation.
+- bKash integration status.
+- Nagad integration status.
+- Card gateway status.
+- Required environment variables.
+- Sandbox test results.
+- Live verification status.
+- Known limitations.
+
+### 4. BANGLADESH-ADDRESS-REPORT.md
+
+Include:
+- Dataset source.
+- Dataset version.
+- Administrative hierarchy.
+- Number of imported locations.
+- Parent-child validation.
+- Address migration results.
+- Test results.
+
+### 5. EMAIL-VERIFICATION-REMOVAL-REPORT.md
+
+Include:
+- Removed verification functionality.
+- Modified authentication routes.
+- Modified middleware.
+- Database compatibility.
+- Preserved password reset functionality.
+- Test results.
+
+### 6. PRODUCTION-VERIFICATION-REPORT.md
+
+Include:
+- Build results.
+- Type-check results.
+- Unit test results.
+- Integration test results.
+- Playwright results.
+- Database verification.
+- Security findings.
+- Failed tests.
+- Remaining blockers.
+
+---
+
+# STRICT IMPLEMENTATION RULES
+
+1. Inspect before editing.
+2. Understand existing architecture before changing it.
+3. Do not perform a blind global replacement.
+4. Do not rewrite unrelated working functionality.
+5. Do not create fake payment integrations.
+6. Do not invent Bangladesh administrative data.
+7. Do not use mock financial values in production.
+8. Do not trust frontend-submitted prices.
+9. Do not mark online payments successful without backend verification.
+10. Do not delete historical financial records.
+11. Do not delete customer accounts.
+12. Do not remove password reset.
+13. Do not remove transactional emails.
+14. Do not expose secrets.
+15. Do not claim tests passed without actually executing them.
+16. Do not claim live payment integration is verified without real sandbox/production verification.
+17. Do not stop after completing frontend changes.
+18. Do not leave incomplete backend or database functionality.
+19. Do not disable existing tests to hide failures.
+20. Preserve unrelated working features.
+
+If an external credential, API approval, dataset, or infrastructure dependency is missing, implement everything that can safely be completed, clearly document the missing dependency, and never fabricate a successful result.
+
+If a destructive or financially significant migration requires owner approval, stop before executing that operation and provide the exact dry-run results and approval requirement.
+
+---
+
+# FINAL SUCCESS CRITERIA
+
+The migration is considered complete only when:
+
+- BDT is the only active currency for new business transactions.
+- Existing USD product prices have been safely migrated according to an approved exchange rate.
+- Historical orders remain financially auditable.
+- No active customer-facing USD pricing remains.
+- Bangladesh-only address selection works dynamically.
+- Backend validates administrative location relationships.
+- COD works independently.
+- Online payment methods are enabled only with valid gateway configuration.
+- Actual payment verification happens on the backend.
+- Orders persist correctly in MongoDB.
+- Admin order management works.
+- Admin financial analytics use real database data and BDT.
+- Account registration and login work without email verification.
+- Verification-only OTP, routes, emails, and middleware are removed.
+- Password reset and transactional emails continue working.
+- Existing unrelated features remain functional.
+- Production builds and applicable tests pass.
+- All unverified dependencies and remaining blockers are documented.
+
+**FINAL INSTRUCTION:**
+
+Treat this project as a real commercial e-commerce application handling real customer accounts, personal information, financial records, payments, and orders.
+
+Prioritize data integrity, security, backward compatibility, and real business functionality over superficial UI changes.
+
+Work systematically, inspect the entire repository, implement changes in controlled phases, test every critical business workflow, and provide evidence-based final reports.
+
+Do not declare the project production-ready while any critical financial, security, database, or order-management issue remains unresolved.

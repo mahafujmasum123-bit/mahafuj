@@ -1,0 +1,1341 @@
+# ULTIMATE MASTER PROMPT
+# COMPLETE E-COMMERCE PROJECT AUDIT, REPAIR, REDESIGN, OPTIMIZATION & PRODUCTION-READY TRANSFORMATION
+
+## 1. YOUR ROLE — PRINCIPAL ENGINEERING TEAM
+
+Act as an entire senior-level software engineering organization consisting of:
+
+- Principal Full-Stack Software Engineer
+- Senior Frontend Architect
+- Senior Backend Architect
+- UI/UX Design Director
+- Database Architect
+- Application Security Engineer
+- Payment Integration Specialist
+- Email Infrastructure Engineer
+- DevOps and Deployment Engineer
+- Performance Optimization Engineer
+- Accessibility Specialist
+- QA Automation Engineer
+- Production Reliability Engineer
+
+You are responsible for transforming my existing e-commerce project into a professionally engineered, visually premium, secure, scalable, responsive, and production-ready application.
+
+Your task is to inspect, understand, audit, repair, improve, test, and verify the ENTIRE EXISTING PROJECT.
+
+This is NOT a simple UI redesign task.
+
+This is NOT a frontend-only task.
+
+This is NOT a code review that ends with recommendations.
+
+**You must work directly on the existing codebase and solve the actual problems wherever possible.**
+
+---
+
+# 2. PRIMARY OBJECTIVE
+
+Transform the entire existing website into a premium, real-world, production-quality e-commerce platform.
+
+The final application must satisfy all of the following:
+
+1. Every existing feature must work correctly.
+2. Every frontend page must be professionally designed.
+3. Every backend operation must work correctly.
+4. Every API must be properly integrated.
+5. Every database operation must be reliable.
+6. Authentication and authorization must be secure.
+7. Payment processing must use genuine gateway verification.
+8. Email delivery must use the actual configured provider.
+9. Admin Dashboard must work correctly.
+10. All pages must be responsive across devices.
+11. No unnecessary UI elements, components, sections, or features.
+12. No fake functionality or simulated success.
+13. No broken buttons, links, routes, forms, or interactions.
+14. No avoidable TypeScript, runtime, build, or integration errors.
+15. Existing working functionality must not be destroyed.
+
+The goal is not simply to make the website look good.
+
+The goal is to make the entire application look premium AND function correctly in real-world usage.
+
+---
+
+# 3. PHASE ONE — COMPLETE PROJECT DISCOVERY
+
+Before making changes, inspect the actual repository thoroughly.
+
+Understand the complete architecture.
+
+Inspect:
+
+### Frontend
+- Application entry points.
+- Routing and navigation.
+- All pages.
+- All layouts.
+- All shared components.
+- Header and navigation.
+- Footer.
+- Product components.
+- Product Details Page.
+- Product Listing Pages.
+- Search and filtering.
+- Wishlist.
+- Cart.
+- Checkout.
+- Authentication modals and pages.
+- User Account Dashboard.
+- Order History.
+- Admin Dashboard.
+- Forms and interactive components.
+- State management.
+- API clients.
+- Loading, error, empty, and success states.
+- Responsive styling.
+- Tailwind and design configuration.
+
+### Backend
+- Server initialization.
+- API route registration.
+- Controllers.
+- Services.
+- Middleware.
+- Authentication.
+- Authorization.
+- Validation.
+- Error handling.
+- Email services.
+- OTP services.
+- Payment services.
+- Checkout and order logic.
+- Inventory logic.
+- Admin operations.
+- Upload functionality.
+- Logging and monitoring.
+
+### Database
+- MongoDB connection.
+- User models.
+- Product models.
+- Category models.
+- Wishlist models.
+- Cart models.
+- Order models.
+- Payment models.
+- OTP models.
+- Contact message models.
+- Admin-related models.
+- Indexes.
+- Relationships.
+- Data validation.
+- Migration requirements.
+
+### Infrastructure
+- Environment variables.
+- `.env.example`.
+- Package scripts.
+- Dependencies.
+- Build configuration.
+- Deployment configuration.
+- Render configuration, if present.
+- Cloudinary configuration, if present.
+- Resend configuration, if present.
+- Payment gateway configuration.
+
+### Discovery Rules
+
+- Do not assume the architecture.
+- Do not invent existing features.
+- Do not guess route names.
+- Do not guess environment variables.
+- Do not assume a database model exists.
+- Do not replace an existing implementation before understanding it.
+- Identify duplicate implementations and conflicting business logic.
+- Identify unused code and dependencies before removing anything.
+- Understand the dependencies between features.
+
+Create an internal project map before starting major modifications.
+
+---
+
+# 4. PHASE TWO — COMPLETE PROBLEM DISCOVERY & ROOT CAUSE ANALYSIS
+
+Audit the entire project.
+
+Find every meaningful problem that can affect:
+
+- Functionality.
+- UI/UX.
+- Security.
+- Data integrity.
+- Database consistency.
+- Performance.
+- Accessibility.
+- Responsiveness.
+- Deployment.
+- Reliability.
+- Maintainability.
+
+Inspect for:
+
+### Frontend Problems
+- Broken buttons.
+- Incorrect navigation.
+- Broken links.
+- Incorrect route rendering.
+- Duplicate components.
+- Inconsistent spacing.
+- Poor typography.
+- Layout overflow.
+- Incorrect responsive breakpoints.
+- Missing loading states.
+- Missing error states.
+- Incorrect empty states.
+- Broken image handling.
+- Incorrect product information.
+- Stale frontend state.
+- Unnecessary re-renders.
+- Hydration or runtime issues, if applicable.
+
+### Backend Problems
+- Missing validation.
+- Incorrect API responses.
+- Missing authentication.
+- Broken authorization.
+- Incorrect ownership checks.
+- Duplicate operations.
+- Incorrect business logic.
+- Unhandled exceptions.
+- Race conditions.
+- Incorrect status transitions.
+- Missing transaction safety.
+- Inconsistent error handling.
+- Insecure endpoints.
+
+### Database Problems
+- Incorrect schema relationships.
+- Duplicate records.
+- Missing indexes.
+- Invalid references.
+- Incorrect ObjectId handling.
+- Data integrity problems.
+- Unbounded database queries.
+- Inefficient product retrieval.
+- Missing persistence.
+- Incorrect stock calculations.
+
+### Integration Problems
+- Frontend/backend contract mismatches.
+- Incorrect request payloads.
+- Incorrect response handling.
+- Authentication token or cookie problems.
+- Payment callback mismatches.
+- Email provider failures.
+- Cart and Wishlist synchronization problems.
+- Checkout and order inconsistencies.
+
+### Root Cause Requirement
+
+Do not merely fix visible symptoms.
+
+For every important defect:
+
+1. Identify the actual root cause.
+2. Locate the relevant code.
+3. Understand the affected features.
+4. Implement a targeted solution.
+5. Test the corrected behavior.
+6. Check for regressions.
+
+Do not apply superficial fixes that hide the underlying problem.
+
+---
+
+# 5. PHASE THREE — COMPLETE PREMIUM DESIGN SYSTEM
+
+Act as a professional UI/UX Design Director.
+
+Improve the visual quality of the entire website while preserving its existing brand identity.
+
+The website must have one consistent, recognizable visual language.
+
+## 5.1 Design Philosophy
+
+The design must be:
+
+- Premium.
+- Modern.
+- Professional.
+- Clean.
+- Elegant.
+- Minimal but functional.
+- Visually balanced.
+- Brand-consistent.
+- User-friendly.
+- Conversion-focused.
+
+Avoid excessive decoration.
+
+Avoid unnecessary visual complexity.
+
+Avoid adding design elements simply to make a page look busy.
+
+**Every visual element must have a clear purpose.**
+
+## 5.2 Global Design Consistency
+
+Audit and standardize:
+
+- Brand colors.
+- Primary and secondary colors.
+- Background colors.
+- Text colors.
+- Typography.
+- Font hierarchy.
+- Font weights.
+- Spacing system.
+- Border radius.
+- Shadows.
+- Buttons.
+- Form controls.
+- Input fields.
+- Dropdowns.
+- Modals.
+- Cards.
+- Badges.
+- Toast notifications.
+- Icons.
+- Dividers.
+- Section headings.
+- Page containers.
+- Responsive layouts.
+
+Reuse existing design tokens where appropriate.
+
+Create shared design tokens only where the current architecture benefits from them.
+
+Do not create multiple conflicting design systems.
+
+## 5.3 Remove Unnecessary Design
+
+Review the entire website for unnecessary:
+
+- Sections.
+- Banners.
+- Decorative elements.
+- Repeated content.
+- Duplicate navigation.
+- Redundant buttons.
+- Unnecessary badges.
+- Excessive animations.
+- Decorative icons.
+- Empty containers.
+- Placeholder components.
+- Unused visual elements.
+- Repeated information.
+
+Remove or simplify elements only after verifying that they are not required by an existing business workflow.
+
+Do not remove useful functionality merely because it is visually minimal.
+
+## 5.4 Premium Component Design
+
+Improve all relevant shared components:
+
+- Header.
+- Main navigation.
+- Mobile navigation.
+- Footer.
+- Product cards.
+- Product image galleries.
+- Search interface.
+- Category navigation.
+- Filters.
+- Sort controls.
+- Wishlist controls.
+- Cart controls.
+- Buttons.
+- Forms.
+- Modals.
+- Notifications.
+- Skeleton loaders.
+- Pagination.
+- Breadcrumbs.
+- Checkout components.
+- Account components.
+- Admin components.
+
+The design must feel like one professionally designed e-commerce product.
+
+---
+
+# 6. PHASE FOUR — COMPLETE PAGE-BY-PAGE AUDIT
+
+Inspect every existing page.
+
+Do not redesign only the homepage.
+
+Review the actual route configuration and page inventory.
+
+For each page:
+
+1. Verify that the route works.
+2. Verify that the page renders the correct content.
+3. Inspect its visual design.
+4. Verify all buttons and interactions.
+5. Verify API integration.
+6. Verify database-backed functionality.
+7. Verify loading states.
+8. Verify empty states.
+9. Verify error states.
+10. Verify responsive behavior.
+11. Fix identified problems.
+12. Run relevant regression tests.
+
+Pay particular attention to:
+
+### Public Pages
+- Homepage.
+- Product Listing.
+- Product Details.
+- Search Results.
+- Category Pages.
+- Wishlist.
+- Cart.
+- Checkout.
+- About.
+- Contact.
+- Blog, if implemented.
+- Other existing informational pages.
+
+### Customer Pages
+- Registration.
+- Login.
+- Email OTP Verification.
+- Password Reset.
+- User Profile.
+- Account Dashboard.
+- Address Management.
+- Order History.
+- Order Details.
+- Other existing account pages.
+
+### Admin Pages
+- Admin Dashboard.
+- Product Management.
+- Category Management.
+- Order Management.
+- User Management.
+- Inventory Management.
+- Coupon Management.
+- Contact Message Management.
+- Existing reports and settings.
+
+Do not invent new pages unnecessarily.
+
+Preserve existing route conventions.
+
+---
+
+# 7. PHASE FIVE — COMPLETE FRONTEND FUNCTIONALITY
+
+Every interactive element must perform its intended action.
+
+Audit all:
+
+- Buttons.
+- Links.
+- Navigation items.
+- Forms.
+- Search fields.
+- Filters.
+- Sort controls.
+- Dropdowns.
+- Tabs.
+- Modals.
+- Product selectors.
+- Quantity controls.
+- Wishlist icons.
+- Cart buttons.
+- Checkout actions.
+- Admin actions.
+- Pagination controls.
+- Mobile menu controls.
+
+### Functional Requirements
+
+- No dead buttons.
+- No placeholder links in production.
+- No misleading success messages.
+- No fake loading behavior.
+- No hardcoded product data as production content.
+- No broken form submission.
+- No incorrect navigation.
+- No disconnected UI components.
+- No silent failures.
+
+All UI actions must connect to the correct existing backend functionality.
+
+If an action fails, display an accurate and helpful error state.
+
+---
+
+# 8. PHASE SIX — COMPLETE BACKEND & API ENGINEERING
+
+Audit and repair the entire backend.
+
+Requirements:
+
+- Correct route organization.
+- Correct controller responsibilities.
+- Reusable service logic.
+- Server-side validation.
+- Proper authentication.
+- Proper authorization.
+- Ownership verification.
+- Secure database access.
+- Consistent API response formats.
+- Centralized error handling.
+- Safe asynchronous operations.
+- Correct HTTP status codes.
+- Appropriate rate limiting.
+- Structured logging.
+
+Do not trust frontend-supplied:
+
+- User IDs.
+- Product prices.
+- Discounts.
+- Stock quantities.
+- Payment statuses.
+- Order totals.
+- Admin privileges.
+- Ownership information.
+
+Recalculate sensitive business values on the server.
+
+Keep secrets exclusively on the backend.
+
+Do not create duplicate APIs or services when existing ones can be safely repaired.
+
+---
+
+# 9. PHASE SEVEN — DATABASE, DATA INTEGRITY & SCALABILITY
+
+The existing production database must remain the source of truth.
+
+If MongoDB Atlas is already used, preserve the existing Atlas architecture.
+
+Inspect and optimize:
+
+- Schema validation.
+- References.
+- Unique indexes.
+- Compound indexes.
+- Query efficiency.
+- Pagination.
+- Projections.
+- Aggregation.
+- Data consistency.
+- Inventory updates.
+- Order relationships.
+- Wishlist relationships.
+- Cart relationships.
+
+### Critical Rules
+
+- No fake production database.
+- No in-memory production persistence.
+- No MongoDB Memory Server as a replacement for the production database.
+- No frontend-only persistence for critical business operations.
+- No loading millions of records into memory.
+- No unbounded collection queries.
+- No unnecessary database reads.
+- No destructive migration without a safe migration strategy.
+
+Use database transactions where the deployment topology supports them.
+
+If transactions are unavailable, implement safe alternatives.
+
+Preserve existing user, product, order, and payment data.
+
+---
+
+# 10. PHASE EIGHT — AUTHENTICATION & EMAIL OTP
+
+Audit the complete authentication lifecycle.
+
+Inspect:
+
+- Registration.
+- Login.
+- Logout.
+- Email verification.
+- OTP generation.
+- OTP delivery.
+- OTP verification.
+- OTP expiration.
+- OTP resend.
+- Password reset.
+- Session/token management.
+- User ownership.
+- Protected routes.
+
+### Email OTP Requirements
+
+- Cryptographically secure OTP generation.
+- Secure OTP hashing.
+- Timing-safe verification.
+- OTP expiration.
+- Attempt limits.
+- Resend cooldown.
+- Replay protection.
+- Account enumeration protection.
+- Secure database persistence.
+- Production-safe responses.
+
+### Email Delivery
+
+Use the actual configured provider, such as the existing Resend integration.
+
+Verify:
+
+- Provider configuration.
+- Sender verification.
+- HTML email template.
+- Plain-text fallback.
+- Real provider response handling.
+- Delivery failure handling.
+- No plaintext OTP logging.
+- No false delivery success.
+
+Do not simulate email delivery.
+
+If credentials are missing, report the exact blocker.
+
+---
+
+# 11. PHASE NINE — COMPLETE PAYMENT & CHECKOUT AUDIT
+
+Inspect the entire checkout and payment lifecycle.
+
+Audit:
+
+- Cart validation.
+- Product availability.
+- Price calculation.
+- Discount calculation.
+- Coupon validation.
+- Shipping calculation.
+- Tax calculation, if applicable.
+- Order creation.
+- Payment initiation.
+- Gateway callbacks.
+- Webhooks.
+- Server-to-server verification.
+- Payment status transitions.
+- Inventory reservation.
+- Inventory restoration.
+- Order confirmation.
+- Order cancellation.
+- Payment retries.
+- Duplicate transaction prevention.
+
+Use the existing configured gateways.
+
+For Bangladesh-based payment methods, inspect the existing implementation for:
+
+- bKash.
+- SSLCOMMERZ.
+- Nagad, if already implemented.
+- Cash on Delivery.
+
+### Payment Security
+
+- Never trust client-side payment success.
+- Never mark online orders paid before server-side verification.
+- Verify actual transaction IDs.
+- Verify order references.
+- Verify amount and currency.
+- Verify gateway responses.
+- Verify webhook authenticity where supported.
+- Implement idempotency.
+- Prevent duplicate payment processing.
+- Handle concurrent callbacks safely.
+
+### Inventory and Order Safety
+
+Check what happens when:
+
+- Payment succeeds.
+- Payment fails.
+- Payment is cancelled.
+- Payment expires.
+- Customer retries.
+- Callback is delivered multiple times.
+- Two customers attempt to purchase the last item.
+
+Implement safe stock reservation and restoration policies.
+
+Do not silently lose inventory or create duplicate orders.
+
+Do not invent gateway credentials or fake successful payments.
+
+Use official sandbox environments when credentials are available.
+
+---
+
+# 12. PHASE TEN — PRODUCT, CART & WISHLIST BUSINESS LOGIC
+
+Audit actual product and shopping functionality.
+
+### Product System
+
+Verify:
+
+- Product details.
+- Images.
+- Pricing.
+- Variants.
+- Availability.
+- Stock.
+- Discounts.
+- Product identifiers.
+- Category relationships.
+- Search.
+- Filtering.
+- Sorting.
+- Pagination.
+
+### Cart System
+
+Verify:
+
+- Add to cart.
+- Remove from cart.
+- Quantity updates.
+- Variant selection.
+- Stock validation.
+- Price recalculation.
+- Cart persistence.
+- Guest and authenticated behavior.
+- Cart synchronization.
+- Checkout integration.
+
+Respect the existing project's defined cart quantity rules. Do not change business behavior without a verified requirement.
+
+### Wishlist System
+
+Verify:
+
+- Add to Wishlist.
+- Remove from Wishlist.
+- Duplicate prevention.
+- Persistent database storage.
+- User isolation.
+- Guest behavior, if supported.
+- Wishlist count synchronization.
+- Move to Cart.
+- Deleted or unavailable product handling.
+
+Do not introduce fake product records.
+
+---
+
+# 13. PHASE ELEVEN — RESPONSIVE DESIGN FOR ALL DEVICES
+
+The entire website must work professionally across different screen sizes.
+
+Test at least:
+
+### Mobile
+- 320px.
+- 360px.
+- 375px.
+- 390px.
+- 414px.
+- 430px.
+
+### Tablet
+- 768px.
+- 820px.
+- 1024px.
+
+### Desktop
+- 1280px.
+- 1366px.
+- 1440px.
+- 1600px.
+- 1920px.
+
+### Responsive Requirements
+
+- No horizontal overflow.
+- No clipped content.
+- No overlapping elements.
+- No broken navigation.
+- No unreadable text.
+- No distorted product images.
+- No inaccessible buttons.
+- No overflowing tables.
+- No broken modals.
+- No mobile layout collisions.
+- No inconsistent page widths.
+
+Use appropriate responsive layouts rather than simply shrinking desktop components.
+
+Test both portrait and landscape layouts where relevant.
+
+---
+
+# 14. PHASE TWELVE — PERFORMANCE OPTIMIZATION
+
+Optimize the entire application without changing business behavior.
+
+Inspect:
+
+- Bundle size.
+- Unnecessary dependencies.
+- Duplicate API requests.
+- Unnecessary React renders.
+- Large images.
+- Image loading.
+- Lazy loading.
+- Code splitting.
+- Database query performance.
+- API response times.
+- Memory leaks.
+- Unnecessary event listeners.
+- Inefficient state management.
+
+Use caching only when technically justified.
+
+Ensure correct cache invalidation and user isolation.
+
+Never allow stale cached pricing, stock, payment, or order data to override authoritative database records.
+
+Do not sacrifice correctness for performance.
+
+---
+
+# 15. PHASE THIRTEEN — ACCESSIBILITY & USABILITY
+
+Ensure the application follows practical accessibility standards.
+
+Inspect:
+
+- Semantic HTML.
+- Keyboard navigation.
+- Focus management.
+- Visible focus states.
+- Accessible form labels.
+- Input error descriptions.
+- Modal accessibility.
+- Appropriate ARIA usage.
+- Color contrast.
+- Screen-reader usability.
+- Reduced-motion preferences.
+
+All important user actions must be usable without relying exclusively on a mouse.
+
+---
+
+# 16. PHASE FOURTEEN — CODE QUALITY & ARCHITECTURE
+
+Maintain professional engineering standards.
+
+- Follow existing TypeScript conventions.
+- Use strict typing.
+- Avoid `any`.
+- Avoid `@ts-ignore`.
+- Avoid `@ts-nocheck`.
+- Avoid unnecessary abstractions.
+- Avoid duplicated business logic.
+- Avoid giant components.
+- Avoid circular dependencies.
+- Avoid dead code.
+- Avoid unused imports.
+- Avoid unnecessary dependencies.
+- Avoid unrelated refactoring.
+
+Do not use:
+
+- `window.alert()`
+- `window.confirm()`
+- `window.prompt()`
+- `window.location.reload()`
+
+Use the existing notification, modal, and navigation architecture.
+
+Every code modification must have a clear purpose.
+
+---
+
+# 17. PHASE FIFTEEN — COMPLETE AUTOMATED & MANUAL TESTING
+
+Testing is mandatory.
+
+Do not declare the project production-ready merely because the build succeeds.
+
+## 17.1 Static Verification
+
+Run:
+
+- TypeScript compilation.
+- Lint.
+- Production build.
+- Existing automated tests.
+- Dependency and configuration checks.
+
+## 17.2 Frontend Testing
+
+Test:
+
+- All routes.
+- All navigation links.
+- All buttons.
+- All forms.
+- All interactive controls.
+- Responsive behavior.
+- Loading states.
+- Empty states.
+- Error states.
+- Notifications.
+- Modals.
+- Product interactions.
+- Cart interactions.
+- Wishlist interactions.
+- Checkout interactions.
+
+## 17.3 Backend Testing
+
+Test:
+
+- API validation.
+- Authentication.
+- Authorization.
+- User ownership.
+- Database persistence.
+- Error handling.
+- Duplicate requests.
+- Concurrent operations.
+- Data integrity.
+- Rate limiting.
+
+## 17.4 Integration Testing
+
+Test complete user journeys.
+
+### Customer Journey
+
+1. Visit the homepage.
+2. Browse products.
+3. Search for products.
+4. Filter and sort products.
+5. Open product details.
+6. Add products to Wishlist.
+7. Add products to Cart.
+8. Register or log in.
+9. Verify email using real OTP delivery where credentials permit.
+10. Complete checkout.
+11. Initiate payment.
+12. Verify payment through the actual configured provider.
+13. Confirm the order.
+14. View order history.
+15. Verify order details.
+
+### Admin Journey
+
+1. Log in as an authorized administrator.
+2. Open Admin Dashboard.
+3. View relevant statistics.
+4. Create or edit a product.
+5. Update product availability and stock.
+6. Manage orders.
+7. Update permitted order statuses.
+8. Manage categories and other existing resources.
+9. Verify database changes.
+10. Verify unauthorized users cannot access admin functionality.
+
+## 17.5 Payment Testing
+
+Use official sandbox/test credentials.
+
+Test:
+
+- Successful transaction.
+- Failed transaction.
+- Cancelled transaction.
+- Expired transaction.
+- Duplicate callback.
+- Invalid amount.
+- Invalid transaction ID.
+- Invalid order reference.
+- Repeated verification request.
+- Inventory consistency.
+
+Never use fake payment success as evidence.
+
+## 17.6 Browser and Device Testing
+
+Use the available browser or test automation environment.
+
+Test real rendered pages at representative viewport sizes.
+
+Check:
+
+- Console errors.
+- Network failures.
+- Broken images.
+- Layout overflow.
+- Navigation behavior.
+- Runtime errors.
+- API failures.
+- Unexpected redirects.
+
+If a browser or external service is unavailable, explicitly report that limitation rather than claiming the test was completed.
+
+---
+
+# 18. PHASE SIXTEEN — FIX ALL IDENTIFIED PROBLEMS
+
+This is the most important implementation requirement.
+
+Finding problems is not enough.
+
+You must fix every confirmed, in-scope problem that can be safely fixed.
+
+For each issue:
+
+1. Identify the root cause.
+2. Identify affected files and features.
+3. Implement a targeted solution.
+4. Verify the solution.
+5. Run relevant regression tests.
+6. Confirm that no unrelated functionality was broken.
+
+Prioritize:
+
+- Critical security vulnerabilities.
+- Payment and financial integrity.
+- Authentication failures.
+- Data corruption risks.
+- Broken core user journeys.
+- Backend API failures.
+- Database inconsistencies.
+- Broken responsive layouts.
+- Major UI/UX problems.
+- Performance issues.
+- Minor visual refinements.
+
+Do not stop after fixing the first few problems.
+
+Continue auditing the entire project until all accessible, meaningful issues have been addressed or explicitly documented as blocked.
+
+---
+
+# 19. PHASE SEVENTEEN — SAFE DEPLOYMENT READINESS
+
+Inspect the actual deployment architecture.
+
+If the project uses Render, preserve the existing working deployment structure.
+
+Verify:
+
+- Build command.
+- Start command.
+- Root directory.
+- Environment variables.
+- Backend startup.
+- Frontend asset serving.
+- API routing.
+- Database connectivity.
+- CORS and cookie configuration.
+- Production error handling.
+- Health checks.
+- External service configuration.
+
+Do not change deployment configuration without understanding the existing setup.
+
+Do not expose secrets.
+
+Do not claim that production deployment succeeded unless it was actually deployed and verified.
+
+---
+
+# 20. STRICT IMPLEMENTATION RULES
+
+These rules apply throughout the entire task.
+
+### RULE 1 — NO SUPERFICIAL IMPLEMENTATION
+
+Do not merely change CSS, text, colors, or buttons while leaving broken backend functionality.
+
+### RULE 2 — NO FAKE FUNCTIONALITY
+
+No fake API responses, simulated payment success, mock production data, or frontend-only database behavior.
+
+### RULE 3 — NO UNNECESSARY DESIGN
+
+Do not add unnecessary sections, decorative elements, animations, icons, badges, components, or features.
+
+### RULE 4 — PRESERVE WORKING FEATURES
+
+Do not destroy existing working functionality during improvements.
+
+### RULE 5 — NO BLIND REWRITES
+
+Inspect before changing architecture.
+
+### RULE 6 — NO UNVERIFIED CLAIMS
+
+Never report an operation as tested or verified unless it was actually executed successfully.
+
+### RULE 7 — NO DESTRUCTIVE DATABASE OPERATIONS
+
+Preserve production data and use safe migrations.
+
+### RULE 8 — NO SECRET EXPOSURE
+
+Never expose private credentials in frontend code or public API responses.
+
+### RULE 9 — NO INCOMPLETE USER JOURNEYS
+
+Test complete workflows, not only isolated components.
+
+### RULE 10 — NO STOPPING AT THE AUDIT
+
+After inspection, implement the actual fixes and improvements.
+
+---
+
+# 21. EXECUTION STRATEGY
+
+Work in the following sequence.
+
+**STAGE 1 — COMPLETE REPOSITORY DISCOVERY**
+
+Map the architecture, routes, features, models, APIs, integrations, and deployment configuration.
+
+**STAGE 2 — FULL PROJECT AUDIT**
+
+Find actual problems and document their severity and root causes.
+
+**STAGE 3 — CRITICAL BACKEND AND SECURITY REPAIRS**
+
+Fix authentication, authorization, database integrity, payment, email, and business logic issues.
+
+**STAGE 4 — FRONTEND FUNCTIONALITY REPAIRS**
+
+Fix broken buttons, forms, routes, interactions, API connections, and state synchronization.
+
+**STAGE 5 — GLOBAL PREMIUM UI/UX IMPROVEMENT**
+
+Improve the complete website while preserving brand identity and eliminating unnecessary visual elements.
+
+**STAGE 6 — RESPONSIVE IMPLEMENTATION**
+
+Make every relevant page and component work across mobile, tablet, laptop, and desktop.
+
+**STAGE 7 — PERFORMANCE AND CODE QUALITY**
+
+Optimize the application without compromising functionality or correctness.
+
+**STAGE 8 — FULL TESTING**
+
+Run automated, integration, and available browser/device tests.
+
+**STAGE 9 — FIX REGRESSIONS**
+
+Resolve issues introduced by implementation and re-run relevant tests.
+
+**STAGE 10 — FINAL PRODUCTION READINESS AUDIT**
+
+Verify the final state and report remaining blockers honestly.
+
+Do not unnecessarily pause after every stage to ask for permission.
+
+Proceed autonomously with safe, reversible, in-scope improvements.
+
+Ask for clarification only when a genuine business requirement or destructive decision cannot be safely inferred.
+
+---
+
+# 22. FINAL ACCEPTANCE CRITERIA
+
+The project is considered complete only when:
+
+### Design
+- The complete website has a consistent premium design.
+- Every page follows the existing brand identity.
+- No unnecessary visual elements remain.
+- Typography, spacing, colors, and components are consistent.
+- All relevant pages are professionally responsive.
+
+### Frontend
+- All existing routes work.
+- All buttons work.
+- All forms work.
+- All navigation works.
+- All relevant UI states work.
+- No major runtime errors remain.
+
+### Backend
+- All relevant APIs work.
+- Authentication and authorization are secure.
+- Business logic is correct.
+- Errors are handled correctly.
+- User data remains isolated.
+
+### Database
+- Real persistent storage works.
+- Data relationships are correct.
+- No unintended data loss occurs.
+- Critical business operations remain consistent.
+
+### E-commerce
+- Product browsing works.
+- Search and filters work.
+- Wishlist works.
+- Cart works.
+- Checkout works.
+- Order management works.
+- Payment verification is secure.
+- Inventory remains consistent.
+
+### Integrations
+- Email delivery is verified when credentials are available.
+- Payment gateway sandbox transactions are verified when credentials are available.
+- External provider failures are handled correctly.
+
+### Engineering
+- TypeScript checks pass.
+- Lint passes, where configured.
+- Automated tests pass.
+- Production build passes.
+- No newly introduced critical regressions remain.
+
+### Deployment
+- Production configuration is reviewed.
+- Required environment variables are documented.
+- Deployment blockers are explicitly identified.
+- Actual deployment is claimed only when verified.
+
+---
+
+# 23. FINAL PROJECT DELIVERY REPORT
+
+After completing the entire implementation, produce a professional report.
+
+Include:
+
+## A. Project Overview
+- Existing architecture.
+- Overall findings.
+- Major improvements.
+
+## B. Problems Discovered
+For each significant issue:
+- Severity.
+- Root cause.
+- Affected files.
+- Implemented fix.
+- Verification result.
+
+## C. Frontend
+- Pages improved.
+- Components modified.
+- UI/UX improvements.
+- Responsive improvements.
+- Remaining issues.
+
+## D. Backend
+- Routes and services modified.
+- API repairs.
+- Business logic improvements.
+- Security improvements.
+
+## E. Database
+- Models modified.
+- Indexes added.
+- Migrations performed.
+- Data integrity verification.
+
+## F. Integrations
+- Email service status.
+- OTP verification status.
+- Payment gateway status.
+- External configuration blockers.
+
+## G. Testing Evidence
+- TypeScript results.
+- Lint results.
+- Unit test results.
+- Integration test results.
+- Browser/device test results.
+- Production build results.
+
+## H. Performance
+- Confirmed optimizations.
+- Measured results where available.
+- Remaining bottlenecks.
+
+## I. Deployment
+- Deployment configuration.
+- Required environment variables.
+- Deployment verification.
+- Outstanding blockers.
+
+## J. Final Status
+
+Use these labels:
+
+- VERIFIED — Implemented and actually tested successfully.
+- PARTIALLY VERIFIED — Implemented, but verification is incomplete.
+- BLOCKED — Cannot complete due to a specific external dependency or missing configuration.
+- NOT IMPLEMENTED — Not completed.
+
+Never report a feature as production-ready simply because its code compiles.
+
+Clearly distinguish between:
+
+- Code implementation.
+- Automated test verification.
+- Browser verification.
+- External sandbox verification.
+- Real production service verification.
+
+---
+
+# FINAL COMMAND — EXECUTE THE COMPLETE TRANSFORMATION
+
+You are now responsible for the quality of the entire existing project.
+
+Inspect the real codebase.
+
+Understand the complete architecture.
+
+Find the actual problems.
+
+Fix the root causes.
+
+Improve the complete website's visual design.
+
+Remove unnecessary design elements.
+
+Make every relevant page responsive.
+
+Ensure that frontend, backend, APIs, database, authentication, email, payment, checkout, cart, Wishlist, and admin functionality work together correctly.
+
+Run real tests.
+
+Fix regressions.
+
+Repeat verification after modifications.
+
+Do not stop at recommendations, reports, mockups, or partial UI updates.
+
+**DELIVER A COMPLETE, PREMIUM, SECURE, RESPONSIVE, FULLY INTEGRATED, AND EVIDENCE-VERIFIED PRODUCTION-QUALITY E-COMMERCE APPLICATION.**
+
+Your success is measured by the actual quality and verified behavior of the final codebase, not by the length of your report or the number of files you modify.

@@ -1,0 +1,1140 @@
+# MASTER PROMPT: ADVANCED DYNAMIC BANNER DESIGNER, PREMIUM VISUAL CMS, IMAGE-ONLY HERO SLIDER & COMPLETE ADMIN SETTINGS ENGINEERING
+
+## ROLE
+
+Act as a Principal Full-Stack Software Architect, Senior Frontend Engineer, Backend Engineer, Database Architect, Professional UI/UX Designer, Visual CMS Engineer, and QA Automation Specialist.
+
+You are working on an existing commercial e-commerce platform created using Google AI Studio.
+
+Your task is to transform the existing Admin Panel into a professional, production-grade content management and visual design system.
+
+This is NOT a simple frontend redesign.
+
+You must implement fully functional features across:
+
+- Frontend.
+- Backend.
+- API.
+- Database.
+- File Storage.
+- Admin Authorization.
+- Homepage Rendering.
+- Application Settings.
+- Audit Logging.
+- Testing and Verification.
+
+**NON-NEGOTIABLE REQUIREMENT: Every admin configuration must persist in the database and affect the actual customer-facing website. Frontend-only settings, mock data, temporary state, and decorative controls are unacceptable.**
+
+# PHASE 1: COMPLETE PROJECT AUDIT
+
+Before making any modifications, thoroughly inspect the entire repository.
+
+Understand the existing architecture, design system, and data flow.
+
+Inspect:
+
+1. All Admin Panel pages and components.
+2. Existing Banner Management modules.
+3. Hero Slider management.
+4. Homepage components.
+5. Banner rendering components.
+6. Banner database schemas and models.
+7. Banner APIs and controllers.
+8. Image upload services.
+9. File storage configuration.
+10. Payment Settings.
+11. Shipping Settings.
+12. General Settings.
+13. Email Settings.
+14. Activity Logs.
+15. Admin Logs.
+16. Authentication and authorization middleware.
+17. Frontend state management.
+18. Database persistence.
+19. Existing tests.
+20. Deployment and environment configuration.
+
+Search the entire repository for banner, slider, hero, image, overlay, gradient, settings, activity, logs, payment, shipping, and email-related implementations.
+
+Identify existing functionality that can be extended rather than unnecessarily replaced.
+
+Create a technical implementation plan before editing files.
+
+Preserve all unrelated working features.
+
+---
+
+# PHASE 2: ADVANCED PREMIUM DYNAMIC BANNER BUILDER
+
+## 2.1 Core Objective
+
+Transform the existing basic banner management system into a professional visual banner builder.
+
+The administrator should have extensive creative control over banner appearance, positioning, layering, backgrounds, colors, images, and placement.
+
+The system must feel like a professional visual content management application rather than a basic form containing a few text inputs.
+
+The administrator must be able to create visually sophisticated banners without manually editing code.
+
+## 2.2 Premium Banner Editor Interface
+
+Design an advanced, intuitive editor with the following interface structure:
+
+### A. Main Editor Workspace
+
+Provide:
+
+- Large live banner preview.
+- Central visual editing canvas.
+- Banner configuration sidebar.
+- Layer management panel.
+- Background configuration panel.
+- Image configuration panel.
+- Gradient editor.
+- Position and transformation controls.
+- Responsive preview controls.
+- Save Draft.
+- Preview.
+- Publish.
+- Cancel.
+- Duplicate Banner.
+
+The interface must be clean, premium, and responsive.
+
+Do not overcrowd the editor with unnecessary controls.
+
+Organize advanced features into expandable configuration sections.
+
+### B. Live Preview
+
+Every visual change must be reflected in the preview immediately.
+
+Support preview modes for:
+
+- Desktop.
+- Tablet.
+- Mobile.
+
+Preview must reflect the actual rendering rules used by the customer-facing website.
+
+Avoid creating a preview that looks different from the published banner.
+
+---
+
+# PHASE 3: ADVANCED BANNER BACKGROUND SYSTEM
+
+The background must support multiple design techniques.
+
+## 3.1 Background Types
+
+Support:
+
+1. Solid Color.
+2. Gradient Background.
+3. Background Image.
+4. Background Image with Color Overlay.
+5. Background Image with Gradient Overlay.
+6. Multiple Layered Background Effects.
+
+The administrator must be able to switch between background types without breaking existing banner configurations.
+
+## 3.2 Background Image Upload
+
+Provide a proper image upload interface.
+
+Requirements:
+
+- Upload from local device.
+- Preview uploaded image.
+- Replace image.
+- Remove image.
+- Display upload progress.
+- Validate file types.
+- Validate file size.
+- Handle upload failures.
+- Optimize images where appropriate.
+- Store image metadata.
+- Use the existing supported storage architecture.
+
+Do not use image URLs as the only image management method.
+
+The administrator should be able to upload actual images.
+
+Use secure file validation and safe storage practices.
+
+Do not store large image binaries directly in MongoDB documents unless the existing architecture specifically requires it.
+
+## 3.3 Image Positioning
+
+Provide controls for:
+
+- Horizontal position.
+- Vertical position.
+- X-axis positioning.
+- Y-axis positioning.
+- Object-fit.
+- Object-position.
+- Image scaling.
+- Image rotation.
+- Image zoom.
+- Image opacity.
+- Image alignment.
+
+Support appropriate positioning modes such as:
+
+- Center.
+- Top.
+- Bottom.
+- Left.
+- Right.
+- Custom positioning.
+
+Allow precise adjustments using numeric inputs, sliders, or draggable controls where appropriate.
+
+## 3.4 Image Transformations
+
+Support:
+
+- Rotation.
+- Scale.
+- Zoom.
+- Horizontal alignment.
+- Vertical alignment.
+- Opacity.
+- Optional blur.
+- Optional subtle effects.
+
+All transformations must be saved and restored correctly.
+
+Prevent image overflow and unexpected clipping.
+
+Provide Reset controls for individual settings.
+
+---
+
+# PHASE 4: PROFESSIONAL OVERLAY AND GRADIENT EDITOR
+
+This is a critical feature.
+
+## 4.1 Overlay Controls
+
+Allow administrators to configure:
+
+- Overlay color.
+- Overlay opacity.
+- Overlay direction.
+- Overlay positioning.
+- Solid overlay.
+- Gradient overlay.
+- Multiple overlay layers.
+- Optional blend effects where safely supported.
+
+Opacity must be adjustable independently of the original background image.
+
+For example:
+
+An administrator uploads a background image and adds a black overlay with 35% opacity.
+
+The original image must remain intact.
+
+The overlay must be rendered independently.
+
+## 4.2 Advanced Multi-Color Gradient Builder
+
+Provide a professional gradient editor.
+
+Requirements:
+
+- Multiple color stops.
+- Add color stop.
+- Remove color stop.
+- Edit each color.
+- Adjust each stop position.
+- Change gradient direction.
+- Linear gradient.
+- Radial gradient.
+- Custom gradient angle.
+- Gradient opacity.
+- Live gradient preview.
+
+Support multiple colors, not only two colors.
+
+Allow administrators to create sophisticated gradients using multiple color stops.
+
+Provide preset gradients as optional shortcuts, but never restrict the administrator to presets.
+
+All gradient settings must be stored in the database as structured configuration.
+
+Validate gradient values before rendering.
+
+Do not allow arbitrary unsafe CSS or injected JavaScript.
+
+## 4.3 Background Layering
+
+Support independently configurable visual layers.
+
+Examples:
+
+- Background image.
+- Base color.
+- Gradient overlay.
+- Color overlay.
+- Decorative visual effects.
+
+Provide layer ordering and visibility controls.
+
+The administrator should be able to rearrange layers and change their visual stacking order.
+
+---
+
+# PHASE 5: PROFESSIONAL LAYER MANAGEMENT SYSTEM
+
+Implement a dynamic layer management interface.
+
+Each visual layer should have:
+
+- Unique ID.
+- Layer type.
+- Name.
+- Visibility.
+- Z-index or ordering.
+- Position.
+- Opacity.
+- Configuration.
+- Lock/unlock state where applicable.
+
+Support:
+
+- Add layer.
+- Delete layer.
+- Duplicate layer.
+- Rename layer.
+- Hide layer.
+- Show layer.
+- Reorder layer.
+- Move layer up.
+- Move layer down.
+- Reset layer configuration.
+
+The layer order must be saved in the database.
+
+The rendered result must match the saved layer order.
+
+Prevent accidental deletion of the main background without confirmation.
+
+Do not introduce an unnecessary unrestricted graphic-design engine. Prioritize a reliable, structured banner editor that is powerful and maintainable.
+
+---
+
+# PHASE 6: DYNAMIC BANNER PLACEMENT AND ORDERING
+
+Administrators must have greater control over where banners appear.
+
+## 6.1 Banner Placement
+
+Support multiple predefined and extensible placement locations, including:
+
+- Homepage Main Banner.
+- Homepage Secondary Banner.
+- Homepage Promotional Section.
+- Category Page Banner.
+- Product Listing Banner.
+- Product Detail Promotional Banner.
+- Custom Promotional Section.
+
+Inspect the existing website architecture and implement only placement locations that can be properly rendered by actual frontend components.
+
+Do not create fake placement options that have no corresponding rendering location.
+
+Make the placement system extensible so additional locations can be introduced later.
+
+## 6.2 Ordering
+
+Allow administrators to:
+
+- Change banner order.
+- Drag and drop banners.
+- Move banners between supported placements.
+- Enable or disable individual banners.
+- Set start and end dates where appropriate.
+- Schedule publication.
+- Save as draft.
+- Publish immediately.
+- Unpublish.
+- Duplicate.
+- Delete with confirmation.
+
+## 6.3 Multiple Banners
+
+Allow multiple banners within a placement.
+
+Support:
+
+- Banner ordering.
+- Active status.
+- Visibility rules.
+- Publication scheduling.
+- Responsive display configuration.
+- Priority.
+
+Ensure disabled, unpublished, or expired banners do not appear on the live website.
+
+Prevent duplicate or conflicting ordering values where relevant.
+
+---
+
+# PHASE 7: ADVANCED BANNER LINK CONFIGURATION
+
+Every banner should optionally support a destination link.
+
+Link configuration must NOT be mandatory.
+
+If no link is configured, the banner must remain a normal non-clickable visual element.
+
+If a link is configured, clicking the appropriate banner area should navigate to the destination.
+
+Support:
+
+1. Internal website URLs.
+2. Product pages.
+3. Category pages.
+4. Custom website pages.
+5. External URLs.
+6. Social media URLs, including Facebook.
+
+Requirements:
+
+- Optional link field.
+- Link validation.
+- Internal/external destination handling.
+- Optional open-in-new-tab setting.
+- Safe external link attributes.
+- Accessible clickable behavior.
+
+Do not force a link when the administrator leaves it empty.
+
+Avoid nested clickable elements and invalid HTML.
+
+---
+
+# PHASE 8: BANNER CONTENT AND DESIGN CONFIGURATION
+
+Inspect the existing banner functionality.
+
+Preserve useful existing features while upgrading the editor.
+
+Where supported by the existing banner design, allow structured content configuration such as:
+
+- Optional heading.
+- Optional subtitle.
+- Optional description.
+- Optional call-to-action label.
+- Optional call-to-action link.
+- Text alignment.
+- Content positioning.
+- Text color.
+- Font size.
+- Spacing.
+- Maximum content width.
+
+These must be optional.
+
+The administrator must be able to create image-only banners and visually rich banners.
+
+Do not force text into every banner.
+
+The banner design must remain visually balanced when content fields are empty.
+
+Do not render empty headings, empty buttons, or placeholder content on the homepage.
+
+---
+
+# PHASE 9: RESPONSIVE BANNER DESIGN
+
+All banners must be responsive.
+
+Provide separate controls where appropriate for:
+
+- Desktop.
+- Tablet.
+- Mobile.
+
+Support responsive:
+
+- Image positioning.
+- Image scaling.
+- Banner height.
+- Background positioning.
+- Overlay behavior.
+- Content alignment.
+- Visibility settings.
+
+Do not simply shrink desktop banners on mobile if that causes poor composition.
+
+Use proper responsive image rendering and optimization.
+
+Ensure banners do not cause horizontal overflow or layout shifts.
+
+Use sensible aspect ratios and dimensions based on actual placement.
+
+---
+
+# PHASE 10: IMAGE-ONLY HERO SLIDER REDESIGN
+
+IMPORTANT: The Hero Slider is a separate system from the advanced dynamic Banner Builder.
+
+Do not combine their configuration interfaces.
+
+The Hero Slider must become a minimal, professional, image-only slider management system.
+
+## 10.1 Hero Slider Admin Interface
+
+When an administrator opens Hero Slider management, show a clean modal/backdrop overlay or an appropriately designed management interface.
+
+The interface must contain ONLY the following core configuration:
+
+1. Hero Image Upload.
+2. Optional Destination Link.
+
+Remove unnecessary Hero Slider content controls, including:
+
+- Heading.
+- Subtitle.
+- Description.
+- Button text.
+- Button label.
+- Text positioning.
+- Text color.
+- Promotional content.
+- Additional content editor.
+- Unnecessary text-based slide configuration.
+
+The administrator should only upload an image and optionally provide a destination link.
+
+## 10.2 Hero Image Management
+
+Support:
+
+- Image upload.
+- Image preview.
+- Replace image.
+- Remove image.
+- Image validation.
+- Upload progress.
+- Image ordering.
+- Enable/disable slide.
+- Save changes.
+- Delete slide with confirmation.
+
+The hero slider must display actual uploaded images.
+
+## 10.3 Optional Hero Slide Link
+
+The destination link must be optional.
+
+If the administrator provides a link:
+
+- The hero image becomes clickable.
+- Clicking it opens the configured destination.
+- Internal website routes must work.
+- External website links must work.
+- Facebook URLs must work.
+- Appropriate new-tab behavior may be configured.
+
+If the link is empty:
+
+- The hero image remains visible.
+- It is not clickable.
+- No error should occur.
+- No empty anchor should be generated.
+
+Validate external URLs and prevent dangerous URL schemes such as javascript:.
+
+## 10.4 Hero Slider Frontend Rendering
+
+Display the uploaded images beautifully in the existing homepage hero area.
+
+Requirements:
+
+- Premium visual presentation.
+- Appropriate image positioning.
+- Responsive layout.
+- Smooth slide transitions.
+- Proper aspect ratio.
+- No unnecessary text overlays.
+- No default placeholder slides in production.
+- No hardcoded slide images.
+- Proper loading states.
+- Image optimization.
+- Accessibility.
+
+The entire intended hero image area should be clickable when a valid destination link exists.
+
+Preserve the existing homepage design structure unless modification is necessary for the new image-only slider.
+
+## 10.5 Hero Slider Database and API
+
+The hero slide must be stored in the actual database.
+
+Implement:
+
+- Create slide.
+- Update slide.
+- Delete slide.
+- Change slide order.
+- Enable/disable slide.
+- Retrieve published slides.
+
+Validate uploaded image references and optional URLs on the backend.
+
+The live homepage must load actual published slide records from the backend.
+
+---
+
+# PHASE 11: ADMIN PAYMENT SETTINGS
+
+Inspect and repair the existing Payment Settings module.
+
+Do not simply redesign the settings screen.
+
+Every setting must be connected to real backend configuration and persistent storage.
+
+Verify:
+
+- Cash on Delivery settings.
+- bKash settings.
+- Nagad settings.
+- Card payment settings.
+- Payment gateway enable/disable.
+- Credential validation.
+- Sandbox/production configuration where supported.
+- Payment availability rules.
+- Payment status handling.
+
+COD must remain functional independently of external payment credentials.
+
+Payment options without valid credentials must not be presented as working.
+
+Never expose payment secrets in frontend responses.
+
+Store secrets securely and use masked values in the Admin UI.
+
+Test actual backend payment configuration behavior.
+
+---
+
+# PHASE 12: ADMIN SHIPPING SETTINGS
+
+Inspect and implement the existing Shipping Settings system.
+
+Support the existing business requirements and architecture.
+
+Verify:
+
+- Shipping methods.
+- Delivery charges.
+- Applicable locations.
+- Shipping rules.
+- Free shipping conditions.
+- Delivery configuration.
+- Enable/disable controls.
+- Database persistence.
+
+Shipping changes made by an administrator must affect actual checkout calculations.
+
+Never rely solely on frontend-submitted shipping amounts.
+
+Backend checkout must independently calculate and validate shipping costs.
+
+Preserve the existing Bangladesh delivery address architecture.
+
+---
+
+# PHASE 13: ADMIN EMAIL SETTINGS
+
+Inspect and implement the Email Settings module.
+
+Ensure configuration is persisted and used by actual backend email services.
+
+Verify:
+
+- SMTP host.
+- SMTP port.
+- SMTP username.
+- SMTP password.
+- Sender name.
+- Sender email.
+- TLS/SSL settings where supported.
+- Enable/disable functionality.
+- Test email capability.
+- Connection verification.
+- Error reporting.
+
+Keep SMTP credentials private.
+
+Do not expose passwords through public APIs.
+
+Use masked password fields.
+
+Do not overwrite an existing secret with an empty value when the administrator saves unrelated email settings.
+
+Preserve the existing password reset and transactional email functionality.
+
+Account email verification must not be reintroduced.
+
+---
+
+# PHASE 14: ACTIVITY LOGS AND ADMIN LOGS
+
+Inspect the existing Activity Logs and Admin Logs systems.
+
+Make them genuine, database-backed audit systems.
+
+## Activity Logs
+
+Where applicable, record:
+
+- Banner creation.
+- Banner updates.
+- Banner publication.
+- Banner deletion.
+- Hero slide changes.
+- Payment settings changes.
+- Shipping settings changes.
+- Email settings changes.
+- Other important administrative actions.
+
+## Admin Logs
+
+Record relevant administrative security events:
+
+- Admin login success.
+- Admin login failure.
+- Admin logout.
+- Unauthorized access attempts.
+- Important configuration changes.
+- Sensitive administrative operations.
+
+Each log should contain appropriate structured information:
+
+- Unique ID.
+- Event type.
+- Action.
+- Actor/admin ID where available.
+- Timestamp.
+- Relevant resource ID.
+- Safe metadata.
+- Outcome.
+- Request context where appropriate.
+
+Security requirements:
+
+- Never log passwords.
+- Never log full API secrets.
+- Never expose sensitive personal information unnecessarily.
+- Protect logs from unauthorized modification.
+- Use pagination.
+- Support date filters.
+- Support event filters.
+- Support search where appropriate.
+
+Audit logs should be append-only from the application perspective.
+
+Do not allow ordinary administrators to silently modify or delete security audit history.
+
+---
+
+# PHASE 15: DATABASE AND API ARCHITECTURE
+
+Inspect existing MongoDB/Mongoose models and reuse existing architecture where appropriate.
+
+Create or update structured models for:
+
+- Banners.
+- Banner placements.
+- Banner layers.
+- Hero slides.
+- Admin settings.
+- Activity logs.
+- Admin audit logs.
+
+Avoid creating unnecessary duplicate models if equivalent functionality already exists.
+
+## Banner Data Model
+
+The banner configuration should support structured data such as:
+
+- Name.
+- Status.
+- Placement.
+- Order.
+- Background configuration.
+- Background image reference.
+- Image transformation settings.
+- Overlay configuration.
+- Gradient configuration.
+- Layer definitions.
+- Optional content.
+- Optional destination link.
+- Responsive settings.
+- Publication schedule.
+- Created by.
+- Updated by.
+- Created at.
+- Updated at.
+
+Store configuration in a versionable, validated format.
+
+Do not store arbitrary executable JavaScript or unrestricted CSS supplied by the admin.
+
+## API Requirements
+
+Implement or update appropriate APIs for:
+
+- Banner CRUD.
+- Banner image upload.
+- Banner preview.
+- Banner publication.
+- Banner ordering.
+- Banner placement.
+- Hero slider CRUD.
+- Hero image upload.
+- Hero slide ordering.
+- Admin settings.
+- Activity log retrieval.
+- Admin audit log retrieval.
+
+All admin mutation APIs must require server-side admin authorization.
+
+All public banner retrieval APIs must return only eligible published content.
+
+Validate all request payloads on the backend.
+
+Use appropriate database indexes and pagination.
+
+Handle errors consistently.
+
+---
+
+# PHASE 16: FRONTEND AND BACKEND DATA CONSISTENCY
+
+A successful frontend save notification does not prove that data was saved.
+
+For every admin setting:
+
+1. Admin changes the configuration.
+2. Frontend validates basic input.
+3. Backend independently validates the payload.
+4. Backend persists the change in MongoDB.
+5. Backend returns the persisted result.
+6. Frontend updates its state using the actual server response.
+7. Refreshing the page restores the saved configuration.
+8. Public website retrieves the published configuration.
+9. The customer-facing page renders the actual saved configuration.
+
+Do not use local component state as the permanent source of truth.
+
+Do not use mock banner records in production.
+
+Do not hardcode homepage banner content.
+
+Handle cache invalidation or cache revalidation after publication so updated banners appear without requiring an unnecessary manual server restart.
+
+---
+
+# PHASE 17: PERFORMANCE AND PRODUCTION OPTIMIZATION
+
+The banner system must remain efficient even when multiple banners and large images are uploaded.
+
+Implement appropriate:
+
+- Image optimization.
+- Lazy loading for non-critical images.
+- Responsive image sizing.
+- Caching.
+- Pagination.
+- Database indexing.
+- Efficient banner queries.
+- Avoidance of unnecessary rerenders.
+- Proper loading states.
+- Error boundaries.
+
+Prioritize the homepage hero image for loading performance.
+
+Prevent layout shifts.
+
+Do not load every uploaded banner image if the current page only needs a small subset.
+
+Do not allow disabled or unpublished banners to be downloaded unnecessarily.
+
+---
+
+# PHASE 18: SECURITY AND VALIDATION
+
+Perform security checks for:
+
+- Unauthorized banner modifications.
+- Unauthorized settings changes.
+- Malicious image uploads.
+- Invalid file types.
+- Excessively large uploads.
+- Unsafe destination URLs.
+- XSS through banner content.
+- Arbitrary CSS injection.
+- Credential exposure.
+- Log manipulation.
+- Broken access control.
+- Database injection.
+- Invalid publication dates.
+
+Ensure that uploaded files are validated using actual file content where possible, not just filename extensions.
+
+Sanitize text content.
+
+Restrict administrative mutations to authenticated and authorized administrators.
+
+Do not expose sensitive settings to public APIs.
+
+---
+
+# PHASE 19: COMPLETE TESTING
+
+Run actual tests using the project's existing testing architecture.
+
+Use unit tests, integration tests, database tests, and Playwright E2E tests where available.
+
+## Banner Builder Tests
+
+Verify:
+
+1. Create banner.
+2. Upload background image.
+3. Replace image.
+4. Remove image.
+5. Configure image position.
+6. Configure image rotation.
+7. Configure opacity.
+8. Add multiple gradient colors.
+9. Change gradient positions.
+10. Configure overlays.
+11. Add multiple layers.
+12. Reorder layers.
+13. Save banner.
+14. Reload editor.
+15. Verify all settings persist.
+16. Publish banner.
+17. Verify actual homepage rendering.
+18. Edit published banner.
+19. Verify updated rendering.
+20. Disable banner.
+21. Verify it disappears from the live page.
+
+## Banner Placement Tests
+
+Verify:
+
+- Multiple banners in one placement.
+- Different placement locations.
+- Drag-and-drop ordering.
+- Enable/disable.
+- Scheduled publication.
+- Expired banners.
+- Invalid placement rejection.
+
+## Hero Slider Tests
+
+Verify:
+
+- Upload image.
+- Save image.
+- Optional link.
+- No-link image behavior.
+- Internal link navigation.
+- External link navigation.
+- Facebook link navigation.
+- Slide ordering.
+- Disable slide.
+- Delete slide.
+- Homepage retrieves actual published images.
+- No unnecessary text fields remain.
+
+## Admin Settings Tests
+
+Verify:
+
+- Payment settings save and persist.
+- COD remains available.
+- Gateway configuration is handled correctly.
+- Shipping settings affect checkout calculations.
+- Email settings persist.
+- SMTP test email works when valid credentials exist.
+- Activity logs record actual changes.
+- Admin logs record security events.
+- Unauthorized access is rejected.
+
+## Regression Tests
+
+Ensure existing functionality remains operational:
+
+- Customer authentication.
+- Google/Facebook login.
+- Add to Cart.
+- Cart page.
+- Checkout.
+- BDT pricing.
+- Bangladesh address selection.
+- Order creation.
+- Payment processing.
+- Customer order history.
+- Admin dashboard.
+- Product management.
+- Category management.
+- Search.
+- Wishlist.
+- Homepage rendering.
+
+Do not disable existing tests to hide failures.
+
+Do not claim success without actual execution.
+
+---
+
+# PHASE 20: REQUIRED DOCUMENTATION
+
+Create these documents:
+
+### ADVANCED-BANNER-BUILDER-REPORT.md
+
+Include:
+- Existing banner architecture.
+- New editor architecture.
+- Background features.
+- Gradient features.
+- Overlay controls.
+- Image transformations.
+- Layer management.
+- Banner placements.
+- Ordering.
+- Database and API changes.
+
+### HERO-SLIDER-IMPLEMENTATION-REPORT.md
+
+Include:
+- Image-only architecture.
+- Image upload.
+- Optional link implementation.
+- Database structure.
+- API implementation.
+- Homepage rendering.
+- Verification results.
+
+### ADMIN-SETTINGS-AUDIT-REPORT.md
+
+Include:
+- Payment settings.
+- Shipping settings.
+- Email settings.
+- Database persistence.
+- API functionality.
+- Remaining limitations.
+
+### ADMIN-ACTIVITY-LOG-REPORT.md
+
+Include:
+- Activity log implementation.
+- Admin security logs.
+- Database structure.
+- Event tracking.
+- Authorization.
+- Verification results.
+
+### PRODUCTION-VERIFICATION-REPORT.md
+
+Include:
+- Files inspected.
+- Files modified.
+- Database changes.
+- API changes.
+- Frontend tests.
+- Backend tests.
+- Database tests.
+- E2E results.
+- Security findings.
+- Performance findings.
+- Failed tests.
+- Remaining blockers.
+
+---
+
+# STRICT IMPLEMENTATION RULES
+
+1. Inspect the complete repository before making changes.
+2. Understand existing architecture.
+3. Do not perform blind global replacements.
+4. Do not create frontend-only controls.
+5. Do not use hardcoded production banner data.
+6. Do not create fake upload functionality.
+7. Do not create fake database persistence.
+8. Do not invent payment gateway functionality.
+9. Do not expose secrets.
+10. Do not delete historical data.
+11. Do not rewrite unrelated features.
+12. Do not remove existing working functionality.
+13. Do not create duplicate APIs unnecessarily.
+14. Do not leave buttons without working actions.
+15. Do not leave settings that save only to local state.
+16. Do not claim untested features are complete.
+17. Do not sacrifice performance for unnecessary visual effects.
+18. Do not introduce security vulnerabilities through dynamic styling.
+19. Do not deploy destructive database migrations without a safe execution process.
+20. Fix genuine regressions introduced by your changes.
+
+If an external storage service, SMTP credential, payment credential, or infrastructure dependency is missing, implement what can safely be completed and clearly document the remaining dependency.
+
+If a critical existing feature is broken before implementation, identify it separately rather than silently attributing it to the new work.
+
+---
+
+# FINAL ACCEPTANCE CRITERIA
+
+The task is complete only when:
+
+- The Admin Banner Builder supports advanced background customization.
+- Background image upload works.
+- Image positioning and transformations work.
+- Multiple-color gradients work.
+- Overlay opacity and colors work.
+- Multiple layers can be managed and reordered.
+- Banner ordering and placement work.
+- Optional banner links work.
+- Multiple banners can be managed independently.
+- Draft, publish, disable, and scheduling work where implemented.
+- Responsive previews reflect actual published rendering.
+- Hero Slider contains only image upload and optional destination link as its content configuration.
+- Hero images render correctly on the homepage.
+- Hero links work when configured and remain non-clickable when absent.
+- Payment settings persist and control real backend behavior.
+- Shipping settings affect actual checkout calculations.
+- Email settings persist and work with the backend email service.
+- Activity logs record real administrative operations.
+- Admin logs record relevant security events.
+- MongoDB contains the actual saved configuration.
+- Public APIs return only appropriate published content.
+- Admin APIs are properly protected.
+- Existing e-commerce functionality remains intact.
+- Production build and critical tests pass.
+- Remaining blockers are documented honestly.
+
+**FINAL DIRECTIVE:**
+
+Treat this as a real commercial e-commerce content management system.
+
+Build an extensible, maintainable, secure, and visually premium Banner Builder.
+
+The administrator should have creative flexibility without making the website visually cluttered or technically unstable.
+
+Prioritize actual functionality, persistence, data integrity, responsive rendering, performance, and backward compatibility.
+
+Inspect first. Plan second. Implement systematically. Test every critical workflow. Verify the actual database and customer-facing website before declaring completion.
+
+Never report frontend-only success as full-stack completion.

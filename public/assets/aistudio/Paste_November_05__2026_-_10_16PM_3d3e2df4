@@ -1,0 +1,787 @@
+# MASTER PROMPT — PRODUCTION-GRADE CART SYSTEM FIX, PERSONALIZED PRODUCT RECOMMENDATIONS, PRODUCT IMAGE ZOOM & CART-FLIGHT ANIMATION
+
+You are acting as a **Senior Full-Stack E-commerce Engineer, Software Architect, Database Engineer, QA Engineer, and Production Reliability Specialist**.
+
+Your task is to thoroughly inspect, diagnose, fix, implement, and verify the existing e-commerce project. Do not start coding blindly.
+
+The project already contains working e-commerce functionality. Your responsibility is to correct the existing problems and implement the requested features without breaking authentication, products, inventory, checkout, orders, admin functionality, responsive layouts, or any other existing feature.
+
+**IMPORTANT: Read and understand the entire relevant project architecture before making changes. Find the actual root causes instead of applying temporary UI fixes.**
+
+---
+
+# PHASE 1 — COMPLETE PROJECT AUDIT (MANDATORY BEFORE CODING)
+
+First, inspect the entire repository and understand its architecture.
+
+Inspect all relevant files, including:
+
+- Frontend components, pages, layouts, hooks, and utilities.
+- Product listing and Product Details pages.
+- Add to Cart buttons and their event handlers.
+- Cart Context, Redux/Zustand store, or whichever state-management system already exists.
+- Navbar Cart Icon and Cart Counter.
+- Cart Page and quantity controls.
+- Product Details quantity selector.
+- Cart API endpoints and backend controllers.
+- Cart database models and schemas.
+- Product database models and inventory management.
+- Checkout calculations and order creation.
+- Product recommendation and related-product APIs.
+- Search history, product view history, and order history.
+- Image upload, product image rendering, and image optimization.
+- Existing animations and UI components.
+- Existing tests and test configuration.
+
+Do not assume the project uses a particular state-management implementation. Identify and follow the actual existing architecture.
+
+## 1.1 Identify the root cause of the cart problem
+
+Currently, the following bugs are visible:
+
+1. Clicking Add to Cart causes the cart quantity or counter to increase unexpectedly, sometimes by 10.
+2. The Product Details page displays a default quantity of 10 instead of 1.
+3. Repeated Add to Cart clicks can cause incorrect quantity increments or duplicate cart entries.
+4. Cart information may become inconsistent between the Product Details page, Navbar, Cart Page, and Checkout.
+
+Investigate the actual causes, including:
+
+- Incorrect default quantity values.
+- Incorrect initial state.
+- Hardcoded quantity values.
+- Incorrect API request payloads.
+- Duplicate click handlers.
+- Repeated API calls.
+- React Strict Mode-related side effects, if applicable.
+- Incorrect cart merge logic.
+- Incorrect database update operations.
+- Frontend/backend quantity synchronization.
+- Cart hydration and persisted-state restoration.
+- Race conditions and stale state.
+- Incorrect cart badge calculation.
+- Duplicate event listeners or effects.
+
+Do not simply change the displayed number. Fix the underlying business logic.
+
+Before implementation, document the identified root causes and the files that need modification.
+
+---
+
+# PHASE 2 — IMPLEMENT A REAL-WORLD CART SYSTEM
+
+## 2.1 Add to Cart behavior
+
+Implement the following exact business rules.
+
+**One product should represent one unique cart item, regardless of how many times the Add to Cart button is clicked.**
+
+Example:
+
+| User action | Cart product quantity |
+|---|---:|
+| Click Add to Cart once | 1 |
+| Click Add to Cart twice | 1 |
+| Click Add to Cart 10 times | 1 |
+| Click Add to Cart 100 times | 1 |
+| Manually increase quantity using + | 2 |
+| Increase quantity again using + | 3 |
+| Decrease quantity using - | 2 |
+
+These rules must work consistently across every Add to Cart entry point.
+
+### Required behavior
+
+- When a product is not in the cart, Add to Cart inserts it with quantity `1`.
+- When the same product already exists, another Add to Cart click must not increment its quantity.
+- Repeated clicks must not create duplicate cart rows.
+- Repeated clicks must not accidentally add 10, 100, or any other unexpected quantity.
+- Add to Cart must not automatically open the cart sidebar if the existing design uses a different cart interaction.
+- Preserve the existing authentication requirement: if a guest is required to sign in before adding a product, do not bypass that requirement.
+- If the authentication flow supports pending cart actions, preserve the original product and add it exactly once after successful authentication.
+
+**Important distinction:** Add to Cart and Increase Quantity are two separate operations.
+
+Add to Cart means:
+
+`Ensure this product exists in the cart with quantity 1.`
+
+Increase Quantity means:
+
+`Increase the existing cart item's quantity by exactly 1.`
+
+Never mix these two operations.
+
+## 2.2 Cart data integrity
+
+Use the existing cart architecture and implement reliable synchronization.
+
+Every cart item should have a stable product identifier.
+
+Enforce the following:
+
+- One unique cart entry per product per cart.
+- Correct product ID validation.
+- Quantity must be a positive integer.
+- Invalid or negative quantities must be rejected.
+- Quantity changes must respect product stock limits.
+- Deleted or unavailable products must be handled safely.
+- Product prices must be validated against trusted server-side product data.
+- Cart totals must be recalculated correctly.
+- Never trust client-submitted prices or totals.
+
+If the project uses MongoDB/Mongoose, inspect the current cart schema and database operations.
+
+Use an appropriate unique-item strategy and atomic database operations where necessary to prevent duplicate entries under concurrent requests.
+
+Do not introduce unnecessary schema changes or destructive migrations.
+
+## 2.3 Separate product count from product quantity
+
+Implement the Navbar Cart Counter correctly.
+
+For this project, the Navbar badge should represent the number of unique products in the cart, not the sum of all quantities.
+
+Example:
+
+| Product | Quantity |
+|---|---:|
+| Product A | 5 |
+| Product B | 3 |
+| Product C | 1 |
+
+Navbar Cart Counter = `3`
+
+Total cart quantity = `9`
+
+These are two different values.
+
+The Cart Page should show the actual quantity for each product.
+
+Do not allow the Navbar badge to show 9 in the above example.
+
+Make sure this behavior is consistent after:
+
+- Adding products.
+- Increasing quantity.
+- Decreasing quantity.
+- Removing products.
+- Clearing the cart.
+- Refreshing the page.
+- Logging in.
+- Logging out.
+- Restoring a persisted cart.
+- Loading the cart from the backend.
+
+---
+
+# PHASE 3 — PRODUCT DETAILS DEFAULT QUANTITY FIX
+
+The Product Details page must always initialize the selected quantity to `1`.
+
+### Required behavior
+
+- Initial quantity: `1`.
+- Plus button: increase by exactly `1`.
+- Minus button: decrease by exactly `1`.
+- Minimum quantity: `1`.
+- Maximum quantity: available stock.
+- If stock is zero, disable purchasing actions appropriately.
+- Do not initialize quantity from an unrelated product, previous page state, or hardcoded value such as 10.
+- Switching between products must reset the selected quantity to `1`.
+- Product refresh or route navigation must not unexpectedly restore quantity 10.
+
+If a user selects quantity 5 on the Product Details page and clicks Add to Cart, explicitly distinguish this behavior from the standard Add to Cart action.
+
+**Required rule:** The standard Add to Cart button always ensures the cart item exists with quantity 1. If the existing application provides a separate Buy Now or quantity-aware purchase action, preserve its intended behavior and handle the selected quantity explicitly without changing the standard Add to Cart semantics.
+
+Test the Product Details quantity selector independently from the Navbar counter.
+
+---
+
+# PHASE 4 — CART-FLIGHT ANIMATION FROM EVERY ADD TO CART BUTTON
+
+Implement a premium, smooth, production-ready Cart Flight Animation.
+
+Whenever the user clicks Add to Cart from any supported location, show an animation in which the selected product visually travels toward the Navbar Cart Icon.
+
+### Animation sequence
+
+1. User clicks Add to Cart.
+2. The system validates the action.
+3. The cart operation executes successfully.
+4. A visual representation of the product image appears near the clicked button.
+5. The image smoothly travels toward the Navbar Cart Icon.
+6. The image scales down and fades out as it reaches the cart.
+7. The Navbar Cart Icon displays a subtle success animation.
+8. The cart state updates without creating a duplicate product or increasing quantity.
+
+### Animation requirements
+
+- Smooth motion.
+- Premium easing.
+- Appropriate duration.
+- Responsive behavior on desktop and mobile.
+- No layout shifts.
+- No accidental page scrolling.
+- No blocked buttons.
+- No unnecessary loading delays.
+- No repeated animations from duplicate event handlers.
+- No animation when the cart operation fails.
+- Avoid excessive animations when users click repeatedly.
+
+Use the actual clicked button's position and the actual Navbar Cart Icon's position.
+
+Do not hardcode screen coordinates.
+
+The animation should work from:
+
+- Homepage product cards.
+- Category pages.
+- Product listing pages.
+- Search results.
+- Related Products.
+- Product Details pages.
+- Any other existing Add to Cart entry point.
+
+Use the existing animation library if one is already installed. Otherwise, choose an appropriate lightweight implementation compatible with the existing stack.
+
+Respect `prefers-reduced-motion`. Provide a subtle fallback for users who prefer reduced motion.
+
+**Important:** The animation is visual feedback only. It must never control or modify the actual cart quantity.
+
+---
+
+# PHASE 5 — PERSONALIZED PRODUCT RECOMMENDATION ENGINE
+
+Implement a real, data-driven recommendation system.
+
+The objective is to show products that are genuinely relevant to each individual user.
+
+For example:
+
+If a user frequently searches for, views, and purchases products from a particular category, the recommendation system should prioritize relevant products from that category.
+
+Do not implement random recommendations or hardcoded product arrays.
+
+## 5.1 User behavior tracking
+
+Inspect the existing application and implement appropriate tracking for:
+
+1. Product views.
+2. Search queries.
+3. Search result product clicks.
+4. Product category interactions.
+5. Successful orders.
+6. Relevant purchase history.
+
+Where appropriate, record:
+
+- User ID for authenticated users.
+- Anonymous session identifier for guests, if supported safely.
+- Product ID.
+- Category ID.
+- Search query.
+- Event type.
+- Timestamp.
+- Relevant metadata.
+
+Do not record passwords, payment credentials, unnecessary personal information, or sensitive data.
+
+Avoid creating duplicate view events from React re-renders or repeated effect execution.
+
+Use reasonable event deduplication and rate limiting.
+
+Do not count an Add to Cart click as a successful purchase.
+
+Only completed orders should contribute to purchase-based recommendation signals. Cancelled, failed, or refunded orders should be handled according to the existing order-status model.
+
+## 5.2 Recommendation logic
+
+Build recommendations using meaningful relevance signals.
+
+Consider:
+
+- Frequently viewed categories.
+- Repeated search interests.
+- Successfully ordered categories.
+- Recently viewed products.
+- Products related to current product categories.
+- Relevant product attributes.
+- Product availability and stock.
+- Existing product ranking signals.
+
+Create a reasonable scoring or ranking mechanism.
+
+For example, a product may receive stronger relevance when:
+
+- Its category matches the user's frequently viewed categories.
+- It matches the user's repeated search interests.
+- It belongs to a category from the user's completed order history.
+- It is related to the currently viewed product.
+
+Do not allow a single accidental click to dominate recommendations.
+
+Use appropriate time decay so old activity does not permanently dominate newer interests.
+
+Do not recommend:
+
+- The current product itself.
+- Deleted products.
+- Unpublished products.
+- Out-of-stock products when they cannot be purchased.
+- Products unavailable to the public catalog.
+
+## 5.3 Anonymous users and new users
+
+The system must also work for users without a purchase history.
+
+Use a reasonable fallback hierarchy:
+
+1. Current product category.
+2. Current browsing session.
+3. Recently viewed products.
+4. Popular and relevant products.
+5. Appropriate catalog fallback.
+
+Do not display an empty recommendation section simply because the user has no account or purchase history.
+
+Respect existing authentication and privacy rules.
+
+## 5.4 Database and API architecture
+
+Inspect the existing MongoDB models before designing new collections.
+
+Reuse existing event/history structures when appropriate.
+
+Create or extend backend APIs for:
+
+- Recording product views.
+- Recording search activity.
+- Recording successful order signals.
+- Retrieving personalized recommendations.
+- Retrieving related products.
+
+Validate all incoming identifiers and query parameters on the server.
+
+Protect user-specific endpoints with appropriate authentication and authorization.
+
+Never expose another user's private activity history.
+
+Avoid excessive database queries. Use appropriate indexes, aggregation, pagination, and caching where beneficial.
+
+---
+
+# PHASE 6 — RELATED PRODUCTS SECTION WITH REAL PAGINATION
+
+Implement a professional Related Products section on the Product Details page.
+
+### Core rule
+
+Related Products must be genuinely related to the currently viewed product.
+
+For this project, prioritize products from the same category.
+
+- Exclude the current product.
+- Do not mix unrelated categories simply to fill the section.
+- Do not show duplicate products.
+- Show only published and eligible products.
+- Respect stock and availability rules.
+
+If the user has relevant browsing or purchase history, use it to rank eligible products within the relevant category.
+
+Do not sacrifice category relevance just to force personalization.
+
+## 6.1 Initial loading
+
+The Related Products section must not load an unlimited number of products.
+
+Default initial page size:
+
+`15 products`
+
+If only 5 related products exist, show 5.
+
+If 15 or more exist, show the first 15.
+
+Never load thousands or millions of products into the browser at once.
+
+## 6.2 Show More button
+
+Display a professional **Show More** button only when another page of eligible products actually exists.
+
+Example:
+
+| Total related products | Initial display | Show More |
+|---|---:|---|
+| 0 | 0 | Hidden |
+| 3 | 3 | Hidden |
+| 5 | 5 | Hidden |
+| 15 | 15 | Hidden |
+| 20 | 15 | Visible |
+| 30 | 15 | Visible |
+| 100 | 15 | Visible |
+
+When the user clicks Show More:
+
+1. Fetch the next page from the backend.
+2. Append the new products to the existing list.
+3. Do not reload the entire page.
+4. Do not remove already displayed products.
+5. Do not add duplicates.
+6. Show a loading state.
+7. Display a smooth entrance animation for newly loaded cards.
+8. Update pagination state.
+9. Hide Show More when no additional products remain.
+
+If another page exists after loading, keep Show More visible.
+
+If the last page has loaded, hide the button automatically.
+
+## 6.3 Pagination architecture
+
+Use real server-side pagination.
+
+A possible API structure:
+
+`GET /api/products/:slug/related?page=1&limit=15`
+
+The actual endpoint should follow the existing project's API conventions.
+
+Return a structured response containing:
+
+- Products.
+- Current page.
+- Page size.
+- Total eligible results, if efficiently available.
+- Whether another page exists.
+
+Use a reliable `hasMore` value.
+
+Do not fetch all products and paginate them only on the frontend.
+
+Prevent repeated requests while a page is already loading.
+
+Handle failed requests gracefully and allow retrying.
+
+When the current product changes, reset the related-product pagination state and load the correct recommendations for the new product.
+
+## 6.4 Related Products loading animation
+
+Use a premium but lightweight animation.
+
+- Existing cards remain in place.
+- Newly loaded cards appear smoothly.
+- Avoid excessive movement.
+- Avoid layout jumps.
+- Support mobile and desktop.
+- Respect reduced-motion settings.
+
+Show a loading indicator only while another page is being fetched.
+
+---
+
+# PHASE 7 — PRODUCT IMAGE HOVER ZOOM
+
+Implement an image zoom experience on the Product Details page.
+
+### Desktop behavior
+
+When the user moves the mouse cursor over the main product image:
+
+- Show a magnified view of the image.
+- Zoom should follow the cursor position naturally.
+- The zoom should be smooth.
+- The image must remain inside its intended container.
+- Avoid unexpected page scrolling.
+- Do not distort the original image.
+- Keep the product image sharp when adequate source resolution is available.
+
+When the cursor leaves the image:
+
+- Return smoothly to the normal image view.
+
+### Mobile behavior
+
+Mobile devices do not have a conventional hover interaction.
+
+Provide an appropriate touch-friendly alternative:
+
+- Tap to open a larger image view or zoomable image viewer.
+- Support closing the viewer easily.
+- Prevent accidental page overflow.
+- Preserve swipe or gallery functionality if it already exists.
+
+### Technical requirements
+
+- Use the actual product image.
+- Do not use fake placeholder images in production.
+- Avoid downloading unnecessary full-size images until required.
+- Use optimized image delivery and appropriate image sizes.
+- Preserve existing product gallery behavior.
+- Ensure the zoom feature works with multiple product images.
+
+---
+
+# PHASE 8 — COMPLETE CART AND CHECKOUT REGRESSION AUDIT
+
+After implementing the changes, verify that the complete purchase flow still works.
+
+Test the following:
+
+- Add to Cart from homepage.
+- Add to Cart from category page.
+- Add to Cart from search results.
+- Add to Cart from Product Details.
+- Add to Cart from Related Products.
+- Repeated Add to Cart clicks.
+- Quantity increase and decrease.
+- Remove product.
+- Clear cart.
+- Navbar cart badge.
+- Cart page totals.
+- Product stock validation.
+- Shipping calculations.
+- Coupon calculations.
+- Checkout totals.
+- Order creation.
+- Authentication-required cart flow.
+- Cart persistence after refresh.
+- Cart restoration after login.
+- Mobile cart behavior.
+- Admin product updates affecting the cart correctly.
+
+Do not change payment methods, shipping business rules, authentication rules, or unrelated checkout logic unless a verified dependency requires a minimal compatible fix.
+
+---
+
+# PHASE 9 — AUTOMATED TESTING AND PRODUCTION VERIFICATION
+
+Do not claim that implementation is complete merely because the application starts or the frontend looks correct.
+
+Run the available tests and add appropriate tests for the new behavior.
+
+## 9.1 Cart unit and integration tests
+
+Mandatory test cases:
+
+1. A new product is added with quantity 1.
+2. Clicking Add to Cart twice keeps quantity 1.
+3. Clicking Add to Cart 10 times keeps quantity 1.
+4. Clicking Add to Cart 100 times keeps quantity 1.
+5. Repeated Add to Cart calls do not create duplicate cart items.
+6. Increasing quantity from 1 to 2 works.
+7. Increasing quantity from 2 to 3 works.
+8. Decreasing quantity works.
+9. Quantity cannot fall below 1.
+10. Quantity cannot exceed available stock.
+11. Navbar badge counts unique products, not total units.
+12. Cart totals use actual quantities.
+13. Refreshing restores correct cart state.
+14. Concurrent Add to Cart requests do not create duplicate entries.
+15. Product Details default quantity is always 1.
+
+## 9.2 Recommendation tests
+
+Verify:
+
+- Product views are recorded correctly.
+- Duplicate tracking events are controlled.
+- Search activity is recorded correctly.
+- Successful orders influence recommendations.
+- Cancelled or failed orders are not treated as successful purchases.
+- Relevant categories receive appropriate priority.
+- New users receive sensible fallback recommendations.
+- Unpublished and deleted products are excluded.
+- The current product is excluded from Related Products.
+- Recommendations are not duplicated.
+- User-specific activity is not exposed to other users.
+
+## 9.3 Related Products pagination tests
+
+Verify:
+
+- Initial request loads at most 15 products.
+- Five products produce no Show More button.
+- Fifteen products produce no Show More button if no next page exists.
+- More than 15 products display Show More.
+- Clicking Show More appends the next page.
+- Existing products remain visible.
+- No duplicate products appear.
+- The button disappears after the final page.
+- Failed pagination requests can be retried.
+- Switching products resets the pagination correctly.
+
+## 9.4 Animation tests
+
+Verify:
+
+- Cart Flight Animation runs after successful Add to Cart.
+- It works from all supported entry points.
+- It targets the actual Navbar Cart Icon.
+- Failed cart requests do not show a success animation.
+- Repeated clicks do not create uncontrolled animation instances.
+- Reduced-motion preferences are respected.
+
+## 9.5 Image zoom tests
+
+Verify:
+
+- Desktop hover zoom works.
+- Zoom follows cursor position.
+- Mouse leave resets the image.
+- Mobile touch zoom works.
+- Multiple gallery images work.
+- The image container does not break the layout.
+
+## 9.6 Final application verification
+
+Run the project's actual:
+
+- TypeScript checks.
+- Lint checks.
+- Unit tests.
+- Backend integration tests.
+- Database tests.
+- Production frontend build.
+- Production backend build, if applicable.
+- Playwright or existing end-to-end tests.
+
+Start the application and verify actual API responses.
+
+Use the real database configuration available in the environment.
+
+Never modify production data during tests.
+
+Do not disable failing tests, hide errors, or weaken assertions to make the test suite pass.
+
+If an external service or environment variable is missing, report the exact blocker rather than pretending the feature was verified.
+
+---
+
+# PHASE 10 — DOCUMENTATION AND REQUIRED REPORTS
+
+After implementation and testing, create these reports:
+
+1. `CART-SYSTEM-ROOT-CAUSE-AND-FIX-REPORT.md`
+   - Original problems.
+   - Root causes.
+   - Files modified.
+   - Final cart behavior.
+   - Database consistency improvements.
+
+2. `PERSONALIZED-RECOMMENDATION-REPORT.md`
+   - Tracking architecture.
+   - Recommendation scoring.
+   - Privacy and security.
+   - New or modified APIs.
+   - Fallback behavior.
+
+3. `RELATED-PRODUCTS-PAGINATION-REPORT.md`
+   - Pagination implementation.
+   - API response structure.
+   - Show More behavior.
+   - Performance considerations.
+
+4. `PRODUCT-IMAGE-ZOOM-AND-CART-ANIMATION-REPORT.md`
+   - Zoom behavior.
+   - Cart Flight Animation.
+   - Desktop/mobile support.
+   - Accessibility considerations.
+
+5. `PRODUCTION-VERIFICATION-REPORT.md`
+   - Tests executed.
+   - Passed and failed results.
+   - Build status.
+   - API verification.
+   - Remaining blockers.
+   - Production readiness assessment.
+
+Reports must reflect actual implementation and actual test results. Do not fabricate successful test results.
+
+---
+
+# STRICT DEVELOPMENT RULES
+
+1. First inspect the entire relevant project architecture.
+2. Identify root causes before editing.
+3. Prepare a clear implementation plan.
+4. Work in logical phases.
+5. Modify only necessary files.
+6. Preserve all unrelated working functionality.
+7. Do not rewrite the entire project.
+8. Do not create frontend-only fake features.
+9. Do not use hardcoded recommendation products.
+10. Do not use mock cart persistence in production.
+11. Do not hardcode quantity 10 anywhere in the cart initialization flow.
+12. Do not introduce duplicate API calls or event handlers.
+13. Do not create unnecessary database collections.
+14. Do not expose user behavior or private account information.
+15. Do not trust frontend-submitted prices, quantities, or totals without backend validation.
+16. Do not break existing authentication or checkout behavior.
+17. Do not introduce new dependencies without a real technical reason.
+18. Do not delete core project files during cleanup.
+19. Do not claim that an untested feature is production-ready.
+20. Do not stop after fixing the visible UI. Verify frontend, backend, database, and actual user behavior.
+
+If an existing implementation already correctly supports part of a requirement, preserve it instead of rebuilding it unnecessarily.
+
+If you discover a dependency or architectural limitation, explain it and implement the safest compatible solution.
+
+---
+
+# FINAL ACCEPTANCE CRITERIA
+
+The task is complete only when all the following conditions are satisfied:
+
+- [ ] Add to Cart inserts a new product with quantity 1.
+- [ ] Repeated Add to Cart clicks never increase an existing product's quantity.
+- [ ] Duplicate cart entries are prevented.
+- [ ] Product Details default quantity is 1.
+- [ ] Manual quantity controls work correctly.
+- [ ] Stock limits are enforced.
+- [ ] Navbar badge counts unique products.
+- [ ] Cart Page shows correct quantities and totals.
+- [ ] Cart Flight Animation works from every supported Add to Cart button.
+- [ ] Personalized recommendations use actual user behavior.
+- [ ] New users receive sensible recommendations.
+- [ ] Related Products show only relevant same-category products.
+- [ ] Related Products initially load no more than 15 products.
+- [ ] Show More appears only when another page exists.
+- [ ] Show More loads additional products without refreshing the page.
+- [ ] Show More disappears when no products remain.
+- [ ] Product image hover zoom works on desktop.
+- [ ] Mobile image zoom has an appropriate touch interaction.
+- [ ] Authentication, inventory, cart, and checkout remain functional.
+- [ ] Database persistence and backend validation are verified.
+- [ ] Production build and relevant automated tests pass.
+- [ ] All required reports are generated.
+
+## FINAL INSTRUCTION
+
+Begin with the full project audit.
+
+Do not immediately modify code.
+
+First provide a concise summary of:
+
+1. Existing project architecture.
+2. Current cart implementation.
+3. Exact root cause of the unexpected quantity 10.
+4. Exact root cause of the Product Details default quantity 10.
+5. Existing recommendation and related-product implementation.
+6. Files and database models that need modification.
+7. A safe, phased implementation plan.
+
+Then proceed with the implementation phase by phase.
+
+After each phase, verify the changes before moving forward.
+
+At the end, provide a clear final summary separating:
+
+- Successfully implemented features.
+- Tests that passed.
+- Tests that failed.
+- Features that could not be verified.
+- Remaining production risks.
+
+**The goal is not simply to make the website look correct. The goal is to make the complete cart, recommendation, pagination, image zoom, and animation systems behave correctly in a real-world production e-commerce application.**

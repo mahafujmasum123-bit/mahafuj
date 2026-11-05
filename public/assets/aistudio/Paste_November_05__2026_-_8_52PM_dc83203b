@@ -1,0 +1,902 @@
+# MASTER PROMPT: PRODUCTION-GRADE CUSTOMER AUTHENTICATION, GOOGLE & FACEBOOK SIGNUP, AUTHENTICATION-GATED ADD TO CART, PREMIUM NAVBAR ACCOUNT AVATAR & SECURE HIDDEN ADMIN LOGIN
+
+## ROLE
+
+Act as a Principal Full-Stack Engineer, Senior Authentication Architect, OAuth Integration Specialist, Database Engineer, UI/UX Designer, Application Security Engineer, and QA Automation Engineer.
+
+You are working on an existing commercial e-commerce application built using Google AI Studio.
+
+Your task is to inspect the entire existing project, understand its architecture, and implement the requested authentication and admin access improvements without breaking any existing functionality.
+
+This is a full-stack engineering task, NOT a frontend-only UI modification.
+
+**ABSOLUTE REQUIREMENT: Every feature must work across the frontend, backend, API, database, authentication state, and actual user sessions.**
+
+Do not start changing files until you have inspected the existing implementation.
+
+---
+
+# PHASE 1: COMPLETE PROJECT AUDIT
+
+First, inspect the entire repository and understand its current architecture.
+
+Inspect:
+
+- All frontend components and pages.
+- Navigation bar and account components.
+- Authentication modals.
+- Registration and login forms.
+- Authentication context and state management.
+- Customer models and database schemas.
+- Backend authentication controllers.
+- Registration and login API routes.
+- Authentication middleware.
+- Session and JWT management.
+- Google OAuth integration.
+- Facebook OAuth integration.
+- Admin authentication.
+- Admin authorization middleware.
+- Environment configuration.
+- Cart context and cart services.
+- Add to Cart buttons throughout the application.
+- Product detail pages.
+- Product listing pages.
+- Cart database models.
+- Existing tests and deployment configuration.
+
+Search for all references to:
+
+- Sign Up
+- Sign In
+- Register
+- Login
+- Customer Panel
+- User Panel
+- Admin Panel
+- Admin Login
+- Google Authentication
+- Facebook Authentication
+- Phone Number
+- Mobile Number
+- Add to Cart
+- Account Icon
+- Avatar
+- OAuth
+- Access Token
+- Refresh Token
+- Session
+- Admin Role
+
+Understand which existing files and functions are responsible for each feature.
+
+Create an implementation plan before editing.
+
+Do not rewrite the entire authentication system if the existing architecture can safely support the requested changes.
+
+Preserve all unrelated working functionality.
+
+---
+
+# PHASE 2: CUSTOMER ACCOUNT CREATION MODAL
+
+## 2.1 Default Account Creation Experience
+
+When an unauthenticated customer clicks any Add to Cart button, open a premium account creation modal.
+
+The initial modal state MUST be Account Creation, not Sign In.
+
+Do not initially display the login form.
+
+The customer must create an account or authenticate through a supported OAuth provider before adding products to the cart.
+
+## 2.2 Premium Modal Design
+
+Implement a professional, modern, premium account creation experience.
+
+Requirements:
+
+- Proper modal backdrop overlay.
+- Elegant centered modal.
+- Responsive desktop and mobile layout.
+- Smooth entrance and exit animations.
+- Appropriate modal width and spacing.
+- Clear typography.
+- Premium input styling.
+- Proper focus states.
+- Accessible labels.
+- Loading states.
+- Validation messages.
+- Error handling.
+- Close button.
+- Escape key support.
+- Appropriate scroll locking.
+- Keyboard accessibility.
+
+Do not make the modal look like an ordinary browser alert.
+
+Use the existing website design system, color palette, typography, spacing, and component architecture.
+
+Avoid introducing an unrelated visual design.
+
+## 2.3 Account Creation Form
+
+The customer registration form must contain ONLY these fields:
+
+1. Full Name.
+2. Email Address.
+3. Password.
+
+Remove the following from the customer registration interface:
+
+- Phone Number.
+- Mobile Number.
+- Customer Panel entry.
+- Admin Panel entry.
+- Admin Login links.
+- Unnecessary account-type selectors.
+- Unnecessary role selectors.
+- Generic Submit button.
+
+The primary action button must clearly say:
+
+**Create Account**
+
+Do not use a generic Submit label.
+
+Below or around the form, provide:
+
+- Google account creation.
+- Facebook account creation.
+
+For existing customers, a small secondary "Already have an account? Sign in" link may open the login state.
+
+However, the initial/default modal must always open in Account Creation mode.
+
+IMPORTANT:
+
+Removing phone number from account registration must not accidentally remove the phone number required by the Bangladesh checkout delivery form or existing order records.
+
+Only remove it from the customer account creation flow and related account-registration requirements.
+
+---
+
+# PHASE 3: REMOVE CUSTOMER/ADMIN PANEL LINKS FROM AUTHENTICATION MODAL
+
+Completely remove the unnecessary Customer Panel and Admin Panel entry options from the account creation modal.
+
+The customer must not see:
+
+- Admin Panel access links.
+- Admin Login links.
+- Customer Panel shortcuts.
+- Role-selection buttons.
+- Public admin navigation.
+
+Do not confuse hiding a link with securing an admin route.
+
+Customer and administrator authorization must remain strictly separated on the backend.
+
+Do not expose administrative functionality through customer authentication APIs.
+
+---
+
+# PHASE 4: REAL GOOGLE OAUTH INTEGRATION
+
+Implement proper Google OAuth account creation and authentication.
+
+Do not create a fake Google login button that only changes frontend state.
+
+Use the existing supported authentication architecture and official Google OAuth/OIDC implementation.
+
+## Requirements
+
+1. Customer clicks Continue with Google.
+2. Application initiates the proper OAuth flow.
+3. Google authenticates the user.
+4. Backend verifies the returned identity/token.
+5. Validate the token issuer, audience, expiration, and signature as applicable.
+6. Retrieve the verified email and profile information.
+7. Create a new customer account if one does not already exist.
+8. If an existing account is linked to the same verified Google identity, authenticate that account.
+9. Prevent duplicate customer accounts.
+10. Establish a secure authenticated session.
+11. Update the navigation account avatar.
+12. Restore the intended Add to Cart action.
+
+Use the verified Google identity, not frontend-submitted profile data, as the trusted identity source.
+
+## Google Environment Configuration
+
+Inspect the current environment configuration.
+
+Add the required documented variables to `.env.example`, such as:
+
+- GOOGLE_CLIENT_ID
+- GOOGLE_CLIENT_SECRET
+- GOOGLE_CALLBACK_URL
+
+Use the actual names required by the chosen existing OAuth implementation.
+
+Never expose the Google client secret in frontend code.
+
+If Google credentials are missing, display a clear unavailable/configuration message rather than pretending authentication succeeded.
+
+---
+
+# PHASE 5: REAL FACEBOOK OAUTH INTEGRATION
+
+Implement production-grade Facebook account creation and authentication.
+
+Use the official supported Facebook Login/OAuth flow.
+
+Requirements:
+
+- Correct OAuth redirect.
+- Backend callback handling.
+- Authorization code verification.
+- Token validation where applicable.
+- Correct app ID and redirect URI.
+- Secure identity retrieval.
+- Verified identity association.
+- Duplicate account prevention.
+- Secure session creation.
+- Proper failure handling.
+- OAuth cancellation handling.
+- Account linking safeguards.
+
+Use the verified provider identity to create or authenticate a customer account.
+
+Do not trust arbitrary email addresses or profile details submitted by the frontend.
+
+If Facebook does not provide an email address or does not provide an email that can be reliably verified, handle the situation safely. Do not silently associate the Facebook account with an unrelated existing account.
+
+## Facebook Environment Configuration
+
+Add the appropriate documented variables to `.env.example`, for example:
+
+- FACEBOOK_APP_ID
+- FACEBOOK_APP_SECRET
+- FACEBOOK_CALLBACK_URL
+
+Follow the actual OAuth library and architecture.
+
+Never expose the Facebook App Secret to the browser.
+
+If provider credentials or required permissions are missing, document the exact external setup needed.
+
+Do not report Facebook OAuth as production-verified until the real provider flow has been tested.
+
+---
+
+# PHASE 6: SECURE CUSTOMER REGISTRATION AND DATABASE MANAGEMENT
+
+Inspect the existing customer database schema before modifying it.
+
+Implement registration using the existing data model where appropriate.
+
+Required customer fields should include:
+
+- Customer ID.
+- Full Name.
+- Email.
+- Password Hash for password-based accounts.
+- OAuth provider information where applicable.
+- Account status.
+- Created At.
+- Updated At.
+
+Do not require a phone number for customer registration.
+
+For Google/Facebook accounts, support provider-linked authentication without requiring an unnecessary local password.
+
+## Security Requirements
+
+- Hash passwords using a secure password hashing algorithm such as Argon2id or appropriately configured bcrypt.
+- Never store plaintext passwords.
+- Enforce email uniqueness.
+- Normalize email addresses consistently.
+- Prevent duplicate account creation.
+- Validate email and password server-side.
+- Use secure session or token management.
+- Implement proper session expiration.
+- Protect against brute-force login attempts.
+- Apply authentication rate limits.
+- Prevent account enumeration where appropriate.
+- Validate all request payloads.
+- Never allow users to submit their own admin role.
+- Never trust frontend authentication state as authorization proof.
+
+If an existing email belongs to a password account, do not automatically link an OAuth identity solely because the provider returns a matching email unless the provider identity and email are sufficiently verified and the linking policy is secure.
+
+Preserve existing customers and their order history.
+
+Do not delete existing user records.
+
+---
+
+# PHASE 7: AUTHENTICATION-GATED ADD TO CART
+
+This is one of the most important requirements.
+
+Every Add to Cart action across the entire website must follow the same authentication rules.
+
+Inspect all Add to Cart entry points:
+
+- Homepage product cards.
+- Category pages.
+- Search results.
+- Product detail pages.
+- Related products.
+- Featured products.
+- Any other product listing components.
+
+## Required Behaviour
+
+### Scenario A: Unauthenticated Customer
+
+1. Customer browses the website normally.
+2. Customer clicks Add to Cart.
+3. Backend/customer authentication state is checked.
+4. Since the customer is unauthenticated, the product must NOT be added to the cart.
+5. Open the Account Creation modal.
+6. Initial modal state must be Account Creation.
+7. Store the intended pending cart action safely.
+
+### Scenario B: Successful Account Creation
+
+1. Customer submits Name, Email, and Password.
+2. Backend validates the information.
+3. Customer record is successfully created.
+4. Password is securely hashed.
+5. Authentication session is established.
+6. Customer is redirected back to the original shopping context.
+7. The original intended product is automatically added to the cart.
+8. The cart count updates correctly.
+9. The normal cart-flight animation runs.
+10. Do not require the customer to click Add to Cart again.
+
+### Scenario C: Google/Facebook Authentication
+
+The same pending-cart workflow must work when a customer creates an account or authenticates through Google or Facebook.
+
+After successful OAuth authentication:
+
+- Restore the intended product.
+- Execute the pending Add to Cart action.
+- Update the cart state.
+- Show the existing success feedback or animation.
+
+### Scenario D: Existing Customer
+
+If the customer already has an authenticated session:
+
+- Do not open the registration modal.
+- Add the product normally.
+- Maintain existing cart quantity and duplicate prevention rules.
+- Do not unexpectedly open the cart drawer if the existing design does not require it.
+
+## Pending Cart Action Security
+
+Implement the pending cart action safely.
+
+- Do not trust frontend product prices.
+- Validate product IDs on the backend.
+- Validate product availability.
+- Validate inventory.
+- Use the actual database product price.
+- Prevent duplicate execution.
+- Clear the pending action after success or cancellation.
+- Handle expired sessions.
+- Handle deleted products.
+- Handle unavailable inventory.
+- Handle OAuth cancellation.
+- Prevent unauthorized cart modifications.
+
+Use the existing cart architecture.
+
+If the current system supports persistent database carts, ensure the newly authenticated customer receives the correct cart state.
+
+---
+
+# PHASE 8: PREMIUM NAVIGATION ACCOUNT AVATAR
+
+Implement a dynamic account avatar in the navigation bar.
+
+## 8.1 Unauthenticated State
+
+When the customer is not authenticated:
+
+Display the existing default account icon.
+
+Keep the existing navigation design and responsive behaviour.
+
+Clicking the icon should open the appropriate account creation experience, with Account Creation as the default state.
+
+## 8.2 Authenticated State
+
+After successful registration or login, replace the default account icon with a circular avatar containing the first two characters of the customer's name.
+
+Examples:
+
+Customer Name: Mahafuj Ali
+
+Avatar: MA
+
+Customer Name: Rahim Uddin
+
+Avatar: RA
+
+Customer Name: Sarah
+
+Avatar: SA
+
+Requirements:
+
+- Extract the first two appropriate initials from the customer's name.
+- Trim unnecessary whitespace.
+- Handle single-word names.
+- Handle empty or invalid names safely.
+- Display initials in uppercase.
+- Use a perfectly circular avatar.
+- Use a premium background color consistent with the website.
+- Ensure centered text.
+- Use appropriate font weight.
+- Maintain consistent avatar dimensions.
+- Add subtle hover/focus effects.
+- Support desktop and mobile navigation.
+- Use the authenticated customer's actual name from trusted session/user data.
+
+Do not hardcode initials.
+
+Do not rely only on local storage.
+
+## 8.3 Avatar Interaction
+
+When the authenticated customer clicks the avatar:
+
+Use the existing customer account navigation/menu architecture.
+
+Maintain proper customer authorization.
+
+Do not expose administrative functionality in the customer menu.
+
+After logout, restore the default account icon.
+
+The avatar must update immediately after successful authentication and remain correct after page reload.
+
+---
+
+# PHASE 9: SECURE HIDDEN ADMIN LOGIN SYSTEM
+
+Create a separate, secure administrator login experience.
+
+The public customer registration form must not contain an Admin Panel link.
+
+The Admin Login entry must not appear as an ordinary navigation item or customer account option.
+
+## 9.1 Hidden Admin Access Icon
+
+Implement a discreet, non-obvious admin access icon within an appropriate existing application area.
+
+Requirements:
+
+- Do not display a visible Admin Login text link.
+- Do not display Admin Panel links in the customer registration modal.
+- Do not expose admin credentials in the frontend.
+- Do not interfere with normal customer navigation.
+- Maintain the existing premium visual design.
+
+When the designated icon is clicked, open a separate admin login modal using a backdrop overlay.
+
+IMPORTANT:
+
+The hidden icon is only a discovery/convenience mechanism.
+
+It is NOT a security boundary.
+
+The actual admin dashboard and every admin API route must remain protected by server-side administrator authentication and authorization.
+
+Do not rely on an obscure URL, hidden button, or frontend-only check to secure admin access.
+
+## 9.2 Admin Login Modal
+
+Create a premium modal with:
+
+- Email Address.
+- Password.
+- Login button.
+- Password visibility toggle.
+- Loading state.
+- Validation.
+- Error messages.
+- Close button.
+- Responsive layout.
+- Keyboard accessibility.
+
+This modal must be completely separate from the customer registration modal.
+
+## 9.3 Admin Credentials from Environment Variables
+
+Use secure server-side environment configuration.
+
+Recommended variables:
+
+ADMIN_EMAIL
+ADMIN_PASSWORD_HASH
+
+If the existing project explicitly uses ADMIN_PASSWORD, inspect and migrate that implementation safely to a hashed credential approach where feasible.
+
+IMPORTANT SECURITY RULE:
+
+`.env.example` must contain placeholder variable names and example placeholders only.
+
+NEVER put real administrator email/password credentials or actual secrets inside `.env.example`, GitHub, frontend code, or public configuration.
+
+Actual credentials must exist only in the private server-side `.env` or the hosting provider's secure environment-variable configuration.
+
+The server must perform the admin credential comparison.
+
+Never send the expected admin password or password hash to the frontend.
+
+## 9.4 Admin Authentication Workflow
+
+1. User clicks the hidden admin icon.
+2. Admin login modal opens.
+3. User enters email and password.
+4. Frontend submits credentials securely to the backend.
+5. Backend validates the credentials against secure environment configuration.
+6. If invalid, reject the login.
+7. If valid, establish a secure administrator session.
+8. Verify the admin identity and role on the server.
+9. Redirect to the existing Admin Dashboard.
+
+Only the configured administrator may access the admin dashboard through this environment-based login system.
+
+If existing administrator accounts and permissions are already implemented, inspect them before changing the architecture.
+
+Do not accidentally remove or lock out legitimate administrative access.
+
+## 9.5 Admin Security
+
+Implement:
+
+- Server-side authentication.
+- Secure HttpOnly cookies where cookie-based sessions are used.
+- Secure and appropriate SameSite settings.
+- HTTPS-only secure cookies in production.
+- CSRF protection where applicable.
+- Rate limiting.
+- Login attempt protection.
+- Secure logout.
+- Session expiration.
+- Proper authorization middleware.
+- Admin route protection.
+- Admin API protection.
+- Safe credential rotation.
+- Security audit logging without recording passwords.
+
+A customer session must never be treated as an admin session.
+
+Changing local storage, React state, cookies, or frontend role fields must never grant admin access.
+
+Unauthenticated users must receive appropriate 401 responses.
+
+Authenticated customers without admin permissions must receive appropriate 403 responses.
+
+---
+
+# PHASE 10: PRESERVE EXISTING EMAIL VERIFICATION REMOVAL
+
+The account creation flow must not reintroduce mandatory email verification.
+
+New customers should be able to use their accounts immediately after successful registration.
+
+Do not generate verification OTPs or verification links.
+
+Preserve unrelated email functionality, including password reset and order notifications, if they already exist.
+
+Do not remove password reset security.
+
+---
+
+# PHASE 11: API AND DATABASE VERIFICATION
+
+Audit and verify the following backend operations:
+
+### Customer Authentication
+
+- Customer registration.
+- Customer login.
+- Google OAuth callback.
+- Facebook OAuth callback.
+- Session restoration.
+- Current-user API.
+- Customer logout.
+
+### Cart
+
+- Authenticated Add to Cart.
+- Unauthenticated Add to Cart rejection.
+- Pending cart action restoration.
+- Cart persistence.
+- Cart quantity updates.
+- Duplicate prevention.
+- Product availability validation.
+
+### Admin
+
+- Admin login.
+- Admin session verification.
+- Admin logout.
+- Admin dashboard authorization.
+- Protected admin API access.
+- Invalid credential rejection.
+
+All database changes must preserve existing customers, carts, and order relationships.
+
+Use appropriate unique indexes and migration-safe schema changes.
+
+Do not delete existing user accounts or order history.
+
+---
+
+# PHASE 12: COMPREHENSIVE SECURITY TESTING
+
+Test the following attack scenarios:
+
+1. Customer attempts to access admin dashboard directly.
+2. Customer manually changes a frontend role field to admin.
+3. Customer calls an admin API without authentication.
+4. Customer calls an admin API with a customer session.
+5. Invalid admin credentials are submitted.
+6. Admin login is repeatedly attempted.
+7. OAuth callback contains invalid state.
+8. OAuth callback contains an invalid or expired authorization code.
+9. Duplicate OAuth account creation is attempted.
+10. A customer submits another customer's cart request.
+11. An unauthenticated user attempts to modify a cart directly through an API.
+12. A customer attempts to manipulate product prices.
+13. A pending cart action is replayed.
+14. A session expires during account creation.
+15. A customer logs out and attempts to reuse an old session.
+
+All unauthorized operations must be rejected by the backend.
+
+---
+
+# PHASE 13: COMPLETE TESTING AND REGRESSION VERIFICATION
+
+Execute actual project tests.
+
+Do not merely inspect source code and claim success.
+
+## Frontend Testing
+
+Verify:
+
+- Account creation modal opens from every Add to Cart entry point.
+- Initial state is Account Creation.
+- Sign In is not the default state.
+- Phone Number is absent from account registration.
+- Customer Panel and Admin Panel links are absent.
+- Create Account button works.
+- Google button initiates actual OAuth.
+- Facebook button initiates actual OAuth.
+- Avatar changes after authentication.
+- Avatar initials are correct.
+- Avatar remains correct after reload.
+- Logout restores the default icon.
+- Hidden admin icon opens the admin login modal.
+- Responsive layout works on desktop and mobile.
+
+## Backend Testing
+
+Verify:
+
+- Customer registration persists.
+- Password hashing works.
+- Duplicate email is rejected.
+- Google identity verification works.
+- Facebook identity verification works.
+- Customer sessions work.
+- Admin credentials are validated server-side.
+- Admin sessions work independently.
+- Authorization middleware works.
+- Cart APIs reject unauthorized requests.
+- Pending cart restoration works.
+
+## Database Testing
+
+Verify:
+
+- Customer records are created correctly.
+- No plaintext passwords exist.
+- Unique email constraints work.
+- OAuth identities are stored correctly.
+- Cart records are associated with the authenticated customer.
+- Existing order relationships remain intact.
+- Admin credentials are not stored in customer records.
+
+## End-to-End Testing
+
+Use Playwright or the existing browser testing framework.
+
+Test these complete journeys:
+
+**Journey A: Normal Customer Registration**
+
+1. Open homepage.
+2. Browse products.
+3. Click Add to Cart while logged out.
+4. Verify Account Creation modal opens.
+5. Create an account using Name, Email, and Password.
+6. Verify account exists in MongoDB.
+7. Verify session is established.
+8. Verify the original product is added automatically.
+9. Verify cart count.
+10. Verify navigation avatar initials.
+
+**Journey B: Google Registration**
+
+1. Click Add to Cart while logged out.
+2. Open account creation modal.
+3. Choose Google.
+4. Complete actual Google OAuth.
+5. Verify backend identity.
+6. Verify customer database record.
+7. Verify original pending product is added.
+
+**Journey C: Facebook Registration**
+
+Repeat the same workflow using Facebook OAuth.
+
+**Journey D: Existing Customer**
+
+1. Open the account modal.
+2. Switch to Sign In.
+3. Log in.
+4. Verify avatar.
+5. Add products normally.
+6. Reload the website.
+7. Verify session restoration.
+
+**Journey E: Hidden Admin Login**
+
+1. Open the website.
+2. Locate and click the designated hidden admin icon.
+3. Verify admin login modal.
+4. Enter invalid credentials.
+5. Verify access is rejected.
+6. Enter valid environment-configured credentials.
+7. Verify admin session.
+8. Open admin dashboard.
+9. Verify protected admin APIs work.
+10. Log out.
+11. Verify admin access is revoked.
+
+Use a dedicated test database and real OAuth sandbox/test applications where available.
+
+Never claim a real OAuth provider integration has passed without testing the actual provider flow.
+
+---
+
+# PHASE 14: REQUIRED FINAL DOCUMENTATION
+
+Create:
+
+### AUTHENTICATION-IMPLEMENTATION-REPORT.md
+
+Document:
+- Existing authentication architecture.
+- Customer registration changes.
+- Customer login changes.
+- Session management.
+- Database modifications.
+- Files modified.
+
+### OAUTH-INTEGRATION-REPORT.md
+
+Document:
+- Google OAuth implementation.
+- Facebook OAuth implementation.
+- Required credentials.
+- Callback URLs.
+- Provider configuration.
+- Sandbox testing.
+- Remaining external requirements.
+
+### ADMIN-SECURITY-REPORT.md
+
+Document:
+- Hidden admin access mechanism.
+- Environment configuration.
+- Admin credential validation.
+- Session architecture.
+- Protected routes.
+- Security test results.
+
+### CART-AUTHENTICATION-REPORT.md
+
+Document:
+- Every Add to Cart entry point.
+- Authentication enforcement.
+- Pending cart action.
+- Automatic cart restoration.
+- Cart persistence.
+- Duplicate prevention.
+
+### PRODUCTION-VERIFICATION-REPORT.md
+
+Document:
+- TypeScript results.
+- Build results.
+- Unit tests.
+- Integration tests.
+- Playwright tests.
+- Database verification.
+- Security test results.
+- Failed tests.
+- Unresolved blockers.
+- Features requiring external credentials.
+
+---
+
+# STRICT RULES
+
+1. Scan and understand the complete repository before editing.
+2. Preserve unrelated working functionality.
+3. Do not implement frontend-only authentication.
+4. Do not create fake Google or Facebook login buttons.
+5. Do not trust frontend role information.
+6. Never expose admin credentials.
+7. Never store plaintext customer passwords.
+8. Never put real credentials in `.env.example`.
+9. Never allow unauthorized cart modification.
+10. Do not remove checkout phone number functionality.
+11. Do not delete customer accounts.
+12. Do not break existing order history.
+13. Do not reintroduce mandatory email verification.
+14. Do not bypass existing security middleware.
+15. Do not disable tests to achieve a passing result.
+16. Do not claim success without executing tests.
+17. Do not rewrite unrelated modules unnecessarily.
+18. Do not leave unfinished imports, broken API contracts, or database inconsistencies.
+
+If a required external credential is missing, implement the parts that can safely be completed and clearly document what still requires external configuration.
+
+If a migration or security-sensitive change could lock out existing users or administrators, stop and report the risk before performing an irreversible operation.
+
+---
+
+# FINAL ACCEPTANCE CRITERIA
+
+The project is considered successfully implemented only when:
+
+- Unauthenticated customers cannot add products to the cart.
+- Add to Cart opens the Account Creation modal by default.
+- Account creation uses Name, Email, and Password only.
+- Google OAuth works through a real backend-verified integration.
+- Facebook OAuth works through a real backend-verified integration.
+- Successful authentication automatically completes the pending Add to Cart action.
+- Cart data is correctly persisted.
+- Customer Panel and Admin Panel links are removed from the registration modal.
+- Navigation displays the customer's first two initials in a premium circular avatar.
+- Avatar state persists after reload and resets after logout.
+- Admin access uses a separate hidden-icon login modal.
+- Admin credentials are verified server-side using private environment configuration.
+- Admin dashboard and APIs are inaccessible to ordinary customers.
+- Existing customer accounts and order history remain intact.
+- Existing checkout phone number functionality remains intact.
+- Existing unrelated features continue working.
+- Critical tests pass.
+- Missing external credentials and unverified functionality are clearly documented.
+
+**FINAL DIRECTIVE:**
+
+This is a real commercial e-commerce authentication system, not a visual prototype.
+
+Prioritize security, database consistency, reliable OAuth integration, correct customer experience, and backward compatibility.
+
+Inspect first, plan second, implement carefully, test thoroughly, and report actual results.
+
+Never declare the task complete merely because the frontend appears correct.
